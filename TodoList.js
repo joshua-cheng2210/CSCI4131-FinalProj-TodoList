@@ -29,6 +29,12 @@ async function populateTodoList() {
     }
 }
 
+async function updateTodoList() {
+    const tableBody = document.querySelector('.TaskList-table tbody');
+    tableBody.innerHTML = ''
+    await populateTodoList()
+}
+
 async function onNewTodoSubmit(event){
     event.preventDefault(); 
     
@@ -58,15 +64,13 @@ async function onNewTodoSubmit(event){
         const result = await response.json(); 
 
         if (result.success) {
-            // alert('todo added :) view it in /mytodo.js');
-            window.location.href = '/mytodo.html'
+            updateTodoList()
         } 
 
     } catch (err) {
         throw err
     }     
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     populateTodoList()
