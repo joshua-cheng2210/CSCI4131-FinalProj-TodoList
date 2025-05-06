@@ -9,9 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 const port = 7647
 
-// app.set('views', 'static/views');
-app.set('view engine', 'pug');
-
 var mysql = require("mysql");
 let connection = null
 

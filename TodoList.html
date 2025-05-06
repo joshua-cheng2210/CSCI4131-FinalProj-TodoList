@@ -16,8 +16,10 @@
 
             <div class="Page-input-area">
                 <form id="todo-form">
-                    <input type="text" id="newTaskInput" placeholder="new task">
-                    <input type="datetime" id="newTask-deadline" name="deadline" required>
+                    <label for="newTaskInput"></label>
+                    <input type="text" id="newTaskInput" name="newTaskInput" placeholder="new task" required>
+                    <label for="newTask-deadline"></label>
+                    <input type="datetime-local" id="newTask-deadline" name="newTask-deadline" required>
                     <button id="addTaskBtn" required>Add Task</button>
                 </form>
             </div>
