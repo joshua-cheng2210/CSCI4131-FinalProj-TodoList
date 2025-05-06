@@ -39,18 +39,14 @@ app.get('/getTodoList', (req, res) => {
 });
 
 
-app.post('/addSchedule', (req, res) => {
+app.post('/addtodo', (req, res) => {
   console.log("req.body: ", req.body)
-  const {event, day, start, end, phone, location, url} = req.body; 
-  const sql = 'INSERT INTO schedule (event, day, start, end, phone, location, url) VALUES (?, ?, ?, ?, ?, ?, ?)'; // prevent sql injections
+  const {task, deadline, done} = req.body; 
+  const sql = 'INSERT INTO todoList (task, deadline, done) VALUES (?, ?, ?)'; 
   const values = [
-    event || null,
-    day || null,
-    start ? start + ':00' : null, 
-    end ? end + ':00' : null, 
-    phone || null,
-    location || null,
-    url || null
+    task,
+    deadline,
+    done 
   ];
 
   DB.query(sql, values, (err, results) => {
@@ -80,43 +76,6 @@ app.delete('/deleteSchedule/:id', (req, res) => {
   });
 });
 
-app.get('/updateScheduleForm.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'static', 'js', 'updateScheduleForm.js'));
-});
-
-app.post('/updateSchedule/:id', (req, res) => {
-  const scheduleID = req.params.id;
-  const newData = req.body;
-
-  console.log(`updateScheduleForm for ID: ${scheduleID}`);
-
-  const sql = `UPDATE schedule SET
-                 event = ?, day = ?, start = ?, end = ?,
-                 phone = ?, location = ?, url = ?
-               WHERE id = ?`;
-
-  const values = [
-    newData.event,
-    newData.day,
-    newData.start,
-    newData.end,
-    newData.phone,
-    newData.location,
-    newData.url,
-    scheduleID
-  ];
-
-  DB.query(sql, values, (err, result) => {
-    if (err) {
-      console.log("fail update.", err)
-      return res.status(404).json({ success: false});
-    }
-
-    console.log("successful update:", scheduleID);
-    return res.status(200).json({ success: true});
-  });
-});
-
 app.use(express.static(path.join(__dirname, 'static')));
 app.get('/TodoList.html', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'TodoList.html'));
@@ -126,10 +85,6 @@ app.get('/TodoList.css', (req, res) => {
 });
 app.get('/TodoList.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'TodoList.js'));
-});
-
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'static', 'html', '404.html'));
 });
 
 app.listen(port, () => {

@@ -15,11 +15,13 @@
             </div>
 
             <div class="Page-input-area">
-                <input type="text" id="taskInput" placeholder="Add a new task...">
-                <input id="task-deadline" name="deadline" type="time" required>
-                <button id="addTaskBtn" required>Add Task</button>
+                <form id="todo-form">
+                    <input type="text" id="newTaskInput" placeholder="new task">
+                    <input type="datetime" id="newTask-deadline" name="deadline" required>
+                    <button id="addTaskBtn" required>Add Task</button>
+                </form>
             </div>
-            
+
             <div>
                 <table class="TaskList-table">
                     <tbody>
