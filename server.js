@@ -25,9 +25,9 @@ const mysqlConfig = {
 DB = mysql.createConnection(mysqlConfig);
 
 
-app.get('/getSchedule', (req, res) => {
-  console.log("getting schedule")
-  const sql = 'SELECT * FROM schedule ORDER BY day, start';
+app.get('/getTodoList', (req, res) => {
+  console.log("getTodoList")
+  const sql = 'SELECT * FROM TodoList ORDER BY deadline';
   DB.query(sql, (err, results) => {
     if (err) {
       console.error("Database select error:", err);
@@ -80,32 +80,6 @@ app.delete('/deleteSchedule/:id', (req, res) => {
   });
 });
 
-app.get('/editSchedule/:id', (req, res) => {
-  const scheduleID = req.params.id;
-	console.log("editSchedule id: " + scheduleID);
-
-  //validating the ID
-  const sql = "select * from schedule where id = ?"
-  DB.query(sql, scheduleID, (err, result) => {
-    if (err || result.length > 1) {
-      console.log("attempting to edit invalid schedule ID")
-      // console.log(err)
-    } else {
-      console.log("result from editSchedule: ", result)
-      result = result[0]
-      // console.log("result from editSchedule: ", result.event)
-      // console.log("result from editSchedule: ", result.day)
-      // console.log("result from editSchedule: ", result.start)
-      // console.log("result from editSchedule: ", result.end)
-      // console.log("result from editSchedule: ", result.phone)
-      // console.log("result from editSchedule: ", result.location)
-      // console.log("result from editSchedule: ", result.url)
-      // TODO: update this according to your schedule table or what it is called in your sql
-      return res.render(path.join(__dirname, 'views', 'editForm.pug'), result);
-    }
-  })
-});
-
 app.get('/updateScheduleForm.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'updateScheduleForm.js'));
 });
@@ -144,44 +118,14 @@ app.post('/updateSchedule/:id', (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'static')));
-app.get('/aboutme.html', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'aboutme.html'));
+app.get('/TodoList.html', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'TodoList.html'));
 });
-app.get('/aboutme.css', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'aboutme.css'));
+app.get('/TodoList.css', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'TodoList.css'));
 });
-app.get('/aboutme.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'static', 'js', 'aboutme.js'));
-});
-
-app.get('/myschedule.html', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'myschedule.html'));
-});
-app.get('/myschedule.css', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'myschedule.css'));
-});
-app.get('/myschedule.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'static', 'js', 'myschedule.js'));
-});
-
-app.get('/myform.html', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'myform.html'));
-});
-app.get('/myform.css', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'myform.css'));
-});
-app.get('/myform.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'static', 'js', 'myform.js'));
-});
-
-app.get('/stocks.html', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'stocks.html'));
-});
-app.get('/stocks.css', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'stocks.css'));
-});
-app.get('/stocks.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'static', 'js', 'stocks.js'));
+app.get('/TodoList.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static', 'js', 'TodoList.js'));
 });
 
 app.use((req, res, next) => {
