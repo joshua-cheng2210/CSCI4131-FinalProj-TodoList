@@ -59,7 +59,7 @@ app.delete('/deletetodo/:id', (req, res) => {
   const todoID = req.params.id;
   console.log("delete todo ID: ", scheduleID)
 
-  DB.query(`DELETE FROM todoList WHERE id = ?`, [todoID], (err, result) => {
+  DB.query(`DELETE FROM todoList WHERE taskID = ?`, [todoID], (err, result) => {
       if (err) {
         console.log("failed to removed ", todoID)
           res.status(500).json({ success: false});
