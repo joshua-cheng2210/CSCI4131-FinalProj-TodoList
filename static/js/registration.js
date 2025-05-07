@@ -1,15 +1,31 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 async function onRegistrationSubmit(event){
     event.preventDefault(); 
     
     const username = document.getElementById('username').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
-            
-    const newAcc = {
-        username,
-        email,
-        password,
-    };
+    
+    let newAcc = {}
+    
+    try{
+        bcrypt.hash(plainTextPassword, saltRounds, (err, hash) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            newAcc = {
+                username,
+                email,
+                hash
+            };
+        });
+    } catch (err) {
+        console.log(err)
+        return 
+    }
 
     try {
         const response = await fetch('/registerAcc', {
@@ -32,6 +48,7 @@ async function onRegistrationSubmit(event){
         }
     } catch (error) {
         console.error(error);
+        return;
     }
 };
 
