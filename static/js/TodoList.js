@@ -59,8 +59,32 @@ async function populateTodoListList() {
         console.error("Error populating todo list:", err); 
     }
 }
-async function handleTaskDone(taskId, isChecked) {
 
+async function handleTaskDone(taskId, isChecked) {
+    try {
+        const response = await fetch(`/updatetodo/${taskId}`, { 
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ done: isChecked }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            const listItem = document.querySelector(`.todo-item[data-task-id="${taskId}"]`);
+            if (listItem) {
+                listItem.classList.toggle('task-completed', isChecked);
+            }
+        } 
+    } catch (error) {
+        console.error(error);
+        
+        const checkbox = document.querySelector(`.todo-checkbox[data-task-id="${taskId}"]`);
+        if (checkbox) {
+            checkbox.checked = !isChecked;
+        }
+    }
 }
 
 async function handleTaskDelete(taskId) {
