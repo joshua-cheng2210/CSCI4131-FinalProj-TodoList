@@ -102,6 +102,28 @@ app.get('/TodoList.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'TodoList.js'));
 });
 
+app.use(express.static(path.join(__dirname, 'static')));
+app.get('/login.html', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'login.html'));
+});
+app.get('/login.css', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'login.css'));
+});
+app.get('/login.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static', 'js', 'login.js'));
+});
+
+app.use(express.static(path.join(__dirname, 'static')));
+app.get('/registration.html', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'registration.html'));
+});
+app.get('/registration.css', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'registration.css'));
+});
+app.get('/registration.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static', 'js', 'registration.js'));
+});
+
 app.listen(port, () => {
   console.log(`server listening on http://localhost:${port}/`)
 });
