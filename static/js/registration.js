@@ -24,6 +24,8 @@ async function onRegistrationSubmit(event){
             const result = await response.json();
             if (result.success) {
                 window.location.href = '/login.html'; 
+            } else {
+                window.location.href = '/registration.html'; 
             }
         }
     } catch (error) {
