@@ -22,7 +22,7 @@ async function onLoginSubmit(event) {
             const result = await response.json();
             if (result.success) {
                 window.location.href = '/TodoList.html'; 
-                console.log("response: ", response)
+                console.log("result: ", result)
             } else {
                 window.location.href = '/login.html'; 
             }
