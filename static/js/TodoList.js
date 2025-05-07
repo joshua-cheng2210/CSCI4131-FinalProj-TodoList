@@ -79,11 +79,14 @@ async function populateTodoListList() {
                 <span class="task-deadline">Deadline: ${formattedDeadline}</span>
                 <button class="delete-btn" data-task-id="${todo.taskID}">Delete</button> 
             `;
+
+            const checkbox = listItem.querySelector('.todo-checkbox');
             if(checkbox){
-                checkbox.addEventListener('change', (event) => {
+                listItem.querySelector('.todo-checkbox').addEventListener('change', (event) => {
                     handleTaskDone(event.target.dataset.taskId, event.target.checked);
                 });
             }
+            
             const deleteButton = listItem.querySelector('.delete-btn');
             if(deleteButton){
                 deleteButton.addEventListener('click', (event) => {
