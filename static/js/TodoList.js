@@ -67,7 +67,7 @@ async function handleTaskDelete(taskId) {
 
 }
 async function updateTodoList() {
-    const todoListItems = document.querySelector('todoListItems');
+    const todoListItems = document.getElementById('todoListItems');
     todoListItems.innerHTML = ''
     await populateTodoListList()
 }
