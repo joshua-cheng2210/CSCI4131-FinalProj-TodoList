@@ -64,8 +64,27 @@ async function handleTaskDone(taskId, isChecked) {
 }
 
 async function handleTaskDelete(taskId) {
-
+    try {
+        const response = await fetch(`/deletetodo/${taskId}`, {
+            method: 'DELETE',
+        });
+        if (!response.ok || !result.success) {
+            updateTodoList()
+        }
+        const result = await response.json();
+        if (result.success) {
+            
+            const listItem = document.querySelector(`.todo-item[data-task-id="${taskId}"]`);
+            if (listItem) {
+                listItem.remove();
+            }
+        } 
+    } catch (error) {
+        console.error(error);
+        updateTodoList()
+    }
 }
+
 async function updateTodoList() {
     const todoListItems = document.getElementById('todoListItems');
     todoListItems.innerHTML = ''

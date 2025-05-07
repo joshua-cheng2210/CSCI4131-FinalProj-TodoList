@@ -55,19 +55,19 @@ app.post('/addtodo', (req, res) => {
   });
 });
 
-app.delete('/deleteSchedule/:id', (req, res) => {
-  const scheduleID = req.params.id;
-  console.log("scheduleID: ", scheduleID)
+app.delete('/deletetodo/:id', (req, res) => {
+  const todoID = req.params.id;
+  console.log("delete todo ID: ", scheduleID)
 
-  DB.query(`DELETE FROM schedule WHERE id = ?`, scheduleID, (err, result) => {
+  DB.query(`DELETE FROM todoList WHERE id = ?`, todoID, (err, result) => {
       if (err) {
-        console.log("failed to removed ", scheduleID)
+        console.log("failed to removed ", todoID)
           res.status(500).json({ success: false});
       } else if (result.affectedRows > 0) {
-        console.log("successfully removed ", scheduleID)
+        console.log("successfully removed ", todoID)
         res.status(200).json({ success: true});
       } else {
-        console.log("failed to removed ", scheduleID)
+        console.log("failed to removed ", todoID)
         res.status(404).json({ success: false});
       }
   });
