@@ -21,8 +21,8 @@ async function onLoginSubmit(event) {
         if (response.ok) {
             const result = await response.json();
             if (result.success) {
-                console.log("response: ", response)
                 window.location.href = '/TodoList.html'; 
+                console.log("response: ", response)
             } else {
                 window.location.href = '/login.html'; 
             }
