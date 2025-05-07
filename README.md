@@ -5,7 +5,7 @@ to connect to the mandatory personal UMN DB provided:
 # create a todoList table
 
 CREATE TABLE todoList (
-    taskID INTEGER PRIMARY KEY AUTOINCREMENT,
+    taskID INTEGER PRIMARY KEY AUTO_INCREMENT,
     task VARCHAR(255) NOT NULL,
     deadline DATETIME,
     done BOOLEAN DEFAULT FALSE
