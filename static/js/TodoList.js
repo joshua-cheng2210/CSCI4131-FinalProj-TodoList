@@ -17,7 +17,7 @@ async function populateTodoList() {
             const row = document.createElement('tr');
             row.classList.add('todo-row');
 
-            todo.deadline = new Date(todo.deadline);
+            let formattedDeadline = new Date(todo.deadline);
             formattedDeadline = deadlineDate.toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'numeric',
@@ -29,7 +29,7 @@ async function populateTodoList() {
 
             row.innerHTML = `
                 <td>${todo.task || 'N/A'}</td>
-                <td>${todo.deadline || 'N/A'}</td>
+                <td>${formattedDeadline || 'N/A'}</td>
             `;
             tableBody.appendChild(row);
         });
