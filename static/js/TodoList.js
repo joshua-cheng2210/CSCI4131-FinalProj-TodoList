@@ -29,7 +29,7 @@ async function populateTodoList() {
 
             row.innerHTML = `
                 <td>${todo.task || 'N/A'}</td>
-                <td>${formattedDeadline || 'N/A'}</td>
+                <td>${todo.deadline || 'N/A'}</td>
             `;
             tableBody.appendChild(row);
         });
