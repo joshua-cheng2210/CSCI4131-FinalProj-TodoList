@@ -45,3 +45,6 @@ CREATE TABLE todoList (
 - the todo-deadline text wil be in red if the deadline is missed and the checkbox is not checked; orange if the deadline is close like within 1 hr
 - other styling
 - think about varying screen size
+
+# bugs
+- when registering a new acc, on submit, the pw will be posted in the url
