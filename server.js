@@ -31,7 +31,7 @@ app.post('/registerAcc', (req, res) => {
     let newAcc = [];
 
     try{
-        bcrypt.hash(password, saltRounds, (err, hash) => {
+        bcrypt.hash(password, saltRounds, (err, passwordHash) => {
             if (err) {
                 console.error(err);
                 return;
@@ -39,7 +39,7 @@ app.post('/registerAcc', (req, res) => {
             newAcc = [
                 username,
                 email,
-                hash
+                passwordHash
             ];
         });
     } catch (err) {
