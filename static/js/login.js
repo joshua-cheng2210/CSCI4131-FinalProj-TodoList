@@ -22,7 +22,8 @@ async function onLoginSubmit(event) {
             const result = await response.json();
             if (result.success) {
                 window.location.href = '/TodoList.html'; 
-                console.log("result: ", result.user)
+                // console.log("result: ", result.user)
+                localStorage.setItem('user', JSON.stringify(result.user));
             } else {
                 window.location.href = '/login.html'; 
             }

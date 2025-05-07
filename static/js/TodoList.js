@@ -1,3 +1,4 @@
+var user;
 async function populateTodoListList() {
     const listElement = document.getElementById('todoListItems'); 
 
@@ -153,6 +154,14 @@ async function onNewTodoSubmit(event){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+        console.log("user: ", user)
+    } else {
+        window.location.href = '/login.html';
+        return
+    }
+
     populateTodoListList()
 
     const form = document.getElementById("todo-form")
