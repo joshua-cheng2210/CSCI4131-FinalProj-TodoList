@@ -18,7 +18,7 @@ async function populateTodoList() {
             row.classList.add('todo-row');
 
             let formattedDeadline = new Date(todo.deadline);
-            formattedDeadline = deadlineDate.toLocaleString('en-US', {
+            formattedDeadline = formattedDeadline.toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'numeric',
                 day: 'numeric',
