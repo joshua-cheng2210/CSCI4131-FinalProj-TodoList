@@ -57,7 +57,7 @@ app.post('/addtodo', (req, res) => {
 
 app.delete('/deletetodo/:id', (req, res) => {
   const todoID = req.params.id;
-  console.log("delete todo ID: ", scheduleID)
+  console.log("delete todo ID: ", todoID)
 
   DB.query(`DELETE FROM todoList WHERE taskID = ?`, [todoID], (err, result) => {
       if (err) {
