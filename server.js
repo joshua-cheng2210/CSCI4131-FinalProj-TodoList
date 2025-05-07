@@ -35,9 +35,9 @@ app.post('/registerAcc', (req, res) => {
     DB.query(sql, values, (err, results) => {
       if (err) {
         console.log(err)
-        return res.status(500).json({ success: false});
+        return res.status(500).json({ success: false });
       } else {
-        return res.status(200).json({ success: true});
+        return res.status(200).json({ success: true });
       }
     });
 });
