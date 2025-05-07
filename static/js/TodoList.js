@@ -68,7 +68,7 @@ async function handleTaskDelete(taskId) {
         const response = await fetch(`/deletetodo/${taskId}`, {
             method: 'DELETE',
         });
-        if (!response.ok || !result.success) {
+        if (!response.ok) {
             updateTodoList()
         }
         const result = await response.json();
