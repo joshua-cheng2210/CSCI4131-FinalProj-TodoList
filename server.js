@@ -21,6 +21,24 @@ const mysqlConfig = {
 }
 DB = mysql.createConnection(mysqlConfig);
 
+app.post('/registerAcc', (req, res) => {
+    console.log("req.body: ", req.body)
+    const {username, email, password} = req.body; 
+    const sql = 'INSERT INTO todoList (username, email, password) VALUES (?, ?, ?)'; 
+    const values = [
+        username,
+        email,
+        password 
+    ];
+    
+    DB.query(sql, values, (err, results) => {
+      if (err) {
+        return res.status(500).json({ success: false});
+      } else {
+        return res.status(200).json({ success: true});
+      }
+    });
+});
 
 app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")

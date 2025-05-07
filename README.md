@@ -27,7 +27,7 @@ CREATE TABLE Users (
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     passwordHash VARCHAR(255) NOT NULL,
-    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE todoList (
@@ -36,7 +36,7 @@ CREATE TABLE todoList (
     task VARCHAR(255) NOT NULL,
     deadline DATETIME,
     done BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE -- ON DELETE CASCADE means if a user is deleted, their tasks are also deleted. Choose behavior carefully.
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE 
 );
 
 # design work
