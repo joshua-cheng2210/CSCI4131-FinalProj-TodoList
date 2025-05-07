@@ -23,14 +23,11 @@ async function onRegistrationSubmit(event){
         if (response.ok) {
             const result = await response.json();
             if (result.success) {
-                alert("reg sucess")
                 window.location.href = '/login.html'; 
             } else {
-                alert("reg failed1")
                 window.location.href = '/registration.html'; 
             }
         } else {
-            alert("reg failed2")
             window.location.href = '/registration.html'; 
         }
     } catch (error) {
