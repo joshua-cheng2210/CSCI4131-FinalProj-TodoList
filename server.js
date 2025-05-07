@@ -22,6 +22,7 @@ const mysqlConfig = {
 DB = mysql.createConnection(mysqlConfig);
 
 app.post('/registerAcc', (req, res) => {
+    console.log("/registerAcc")
     console.log("req.body: ", req.body)
     const {username, email, password} = req.body; 
     const sql = 'INSERT INTO todoList (username, email, password) VALUES (?, ?, ?)'; 
