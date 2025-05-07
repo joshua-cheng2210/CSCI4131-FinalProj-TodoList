@@ -7,25 +7,12 @@ async function onRegistrationSubmit(event){
     const username = document.getElementById('username').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
-    
-    let newAcc = {}
-    
-    try{
-        bcrypt.hash(plainTextPassword, saltRounds, (err, hash) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            newAcc = {
-                username,
-                email,
-                hash
-            };
-        });
-    } catch (err) {
-        console.log(err)
-        return 
-    }
+            
+    const newAcc = {
+        username,
+        email,
+        password,
+    };
 
     try {
         const response = await fetch('/registerAcc', {

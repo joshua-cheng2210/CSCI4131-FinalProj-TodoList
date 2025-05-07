@@ -4,6 +4,7 @@ const fs = require('fs');
 const express = require("express");
 const app = express(); 
 const path = require('path');
+const bcrypt = require('bcrypt');
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true}));
@@ -26,13 +27,26 @@ app.post('/registerAcc', (req, res) => {
     console.log("req.body: ", req.body)
     const {username, email, password} = req.body; 
     const sql = 'INSERT INTO Users (username, email, passwordHash) VALUES (?, ?, ?)'; 
-    const values = [
-        username,
-        email,
-        password 
-    ];
+    let newAcc = [];
+
+    try{
+            bcrypt.hash(plainTextPassword, saltRounds, (err, hash) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                newAcc = [
+                    username,
+                    email,
+                    hash
+                ];
+            });
+        } catch (err) {
+            console.log(err)
+            return 
+    }
     
-    DB.query(sql, values, (err, results) => {
+    DB.query(sql, newAcc, (err, results) => {
       if (err) {
         console.log(err)
         return res.status(500).json({ success: false });
