@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 async function onRegistrationSubmit(event){

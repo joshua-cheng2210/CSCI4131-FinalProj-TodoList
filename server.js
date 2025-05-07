@@ -12,6 +12,7 @@ const port = 7647
 
 var mysql = require("mysql");
 let connection = null
+const saltRounds = 10;
 
 const mysqlConfig = {
   host: "cse-mysql-classes-01.cse.umn.edu",
