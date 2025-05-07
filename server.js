@@ -31,20 +31,20 @@ app.post('/registerAcc', (req, res) => {
     let newAcc = [];
 
     try{
-            bcrypt.hash(plainTextPassword, saltRounds, (err, hash) => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                newAcc = [
-                    username,
-                    email,
-                    hash
-                ];
-            });
-        } catch (err) {
-            console.log(err)
-            return 
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            newAcc = [
+                username,
+                email,
+                hash
+            ];
+        });
+    } catch (err) {
+        console.log(err)
+        return 
     }
     
     DB.query(sql, newAcc, (err, results) => {
