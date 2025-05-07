@@ -52,24 +52,6 @@ body{
 }
 
 
-.TaskList-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    text-align: left; 
-}
-
-.TaskList-table th,
-.TaskList-table td { 
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-}
-
-.TaskList-table th {
-    background-color: #f9f9f9;
-    font-weight: bold;
-}
-
 #taskList li {
     /* background: #fff;
     border: 1px solid #ddd; */

@@ -1,44 +1,3 @@
-async function populateTodoList() {
-    const tableBody = document.querySelector('.TaskList-table tbody');
-
-    try {
-        const response = await fetch('/getTodoList'); 
-
-        if (!response.ok) {
-            throw new Error(`Failed to get todo. status -->${response.status}`);
-        }
-        
-        let todos = await response.json(); 
-        todos = todos.results
-        
-        console.log("response from front end: ", todos)
-
-        todos.forEach(todo => {
-            const row = document.createElement('tr');
-            row.classList.add('todo-row');
-
-            let formattedDeadline = new Date(todo.deadline);
-            formattedDeadline = formattedDeadline.toLocaleString('en-US', {
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: '2-digit',
-                hour12: true
-            });
-
-            row.innerHTML = `
-                <td>${todo.task || 'N/A'}</td>
-                <td>${formattedDeadline || 'N/A'}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-
-    } catch (err) {
-        throw err
-    }
-}
-
 async function populateTodoListList() {
     const listElement = document.getElementById('todoListItems'); 
 
@@ -108,8 +67,8 @@ async function handleTaskDelete(taskId) {
 
 }
 async function updateTodoList() {
-    const tableBody = document.querySelector('.TaskList-table tbody');
-    tableBody.innerHTML = ''
+    const todoListItems = document.querySelector('todoListItems');
+    todoListItems.innerHTML = ''
     await populateTodoListList()
 }
 
