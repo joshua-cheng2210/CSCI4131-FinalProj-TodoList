@@ -57,6 +57,35 @@ app.post('/registerAcc', (req, res) => {
     }
 });
 
+app.post('/login', async (req, res) => {
+    console.log("/login POST")
+    const { email, password } = req.body;
+
+    const sql = 'SELECT * FROM Users WHERE email = ?';
+    DB.query(sql, [email], async (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ success: false });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ success: false });
+        }
+
+        const user = results[0];
+        try {
+            const match = await bcrypt.compare(password, user.passwordHash);
+            if (match) {
+                res.status(200).json({ success: true});
+            } else {
+                res.status(401).json({ success: false});
+            }
+        } catch (err) {
+            res.status(500).json({ success: false, user : user});
+        }
+    });
+});
+
 app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")
   const sql = 'SELECT * FROM todoList ORDER BY deadline';
