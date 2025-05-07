@@ -39,6 +39,50 @@ async function populateTodoList() {
     }
 }
 
+async function populateTodoListList() {
+    const listElement = document.getElementById('todoListItems'); 
+
+    try {
+        const response = await fetch('/getTodoList');
+
+        if (!response.ok) {
+            throw new Error(`Failed to get todo. status -->${response.status}`);
+        }
+
+        let todos = await response.json();
+        todos = todos.results; 
+
+        console.log("response from front end: ", todos);
+
+        if (!Array.isArray(todos)) {
+            console.error("Error: Expected an array of todos, but received:", todos);
+            todos = []; 
+        }
+        todos.forEach(todo => {
+            const listItem = document.createElement('li'); 
+            listItem.classList.add('todo-item'); 
+
+            let formattedDeadline = new Date(todo.deadline).toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'long', 
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+
+            listItem.innerHTML = `
+                <span class="task-work">${todo.task || 'N/A'}</span>
+                <span class="task-deadline">Deadline: ${formattedDeadline}</span>
+            `;
+
+            listElement.appendChild(listItem);
+        });
+    } catch (err) {
+        console.error("Error populating todo list:", err); 
+    }
+}
+
 async function updateTodoList() {
     const tableBody = document.querySelector('.TaskList-table tbody');
     tableBody.innerHTML = ''
@@ -83,7 +127,7 @@ async function onNewTodoSubmit(event){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    populateTodoList()
+    populateTodoListList()
 
     const form = document.getElementById("todo-form")
     if (form){

@@ -80,3 +80,38 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
+.TaskList-list {
+    list-style-type: none; 
+    padding: 0;
+    margin-top: 20px;
+}
+
+.todo-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.todo-item:last-child {
+    margin-bottom: 0;
+}
+
+.task-work {
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1; 
+    margin-right: 15px; 
+}
+
+.task-deadline {
+    font-size: 0.9em;
+    color: #666;
+    white-space: nowrap; 
+}
