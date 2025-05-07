@@ -61,6 +61,7 @@ async function populateTodoListList() {
         todos.forEach(todo => {
             const listItem = document.createElement('li'); 
             listItem.classList.add('todo-item'); 
+            listItem.dataset.taskId = todo.taskID;
 
             let formattedDeadline = new Date(todo.deadline).toLocaleString('en-US', {
                 year: 'numeric',
@@ -71,10 +72,24 @@ async function populateTodoListList() {
                 hour12: true
             });
 
+            const isDone = todo.done ? 'checked' : '';
             listItem.innerHTML = `
+                <input type="checkbox" class="todo-checkbox" ${isDone} data-task-id="${todo.taskID}">
                 <span class="task-work">${todo.task || 'N/A'}</span>
                 <span class="task-deadline">Deadline: ${formattedDeadline}</span>
+                <button class="delete-btn" data-task-id="${todo.taskID}">Delete</button> 
             `;
+            if(checkbox){
+                checkbox.addEventListener('change', (event) => {
+                    handleTaskDone(event.target.dataset.taskId, event.target.checked);
+                });
+            }
+            const deleteButton = listItem.querySelector('.delete-btn');
+            if(deleteButton){
+                deleteButton.addEventListener('click', (event) => {
+                    handleTaskDelete(event.target.dataset.taskId);
+                });
+            }
 
             listElement.appendChild(listItem);
         });
@@ -82,7 +97,13 @@ async function populateTodoListList() {
         console.error("Error populating todo list:", err); 
     }
 }
+async function handleTaskDone(taskId, isChecked) {
 
+}
+
+async function handleTaskDelete(taskId) {
+
+}
 async function updateTodoList() {
     const tableBody = document.querySelector('.TaskList-table tbody');
     tableBody.innerHTML = ''
