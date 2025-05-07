@@ -86,7 +86,7 @@ async function populateTodoListList() {
                     handleTaskDone(event.target.dataset.taskId, event.target.checked);
                 });
             }
-            
+
             const deleteButton = listItem.querySelector('.delete-btn');
             if(deleteButton){
                 deleteButton.addEventListener('click', (event) => {
@@ -110,7 +110,7 @@ async function handleTaskDelete(taskId) {
 async function updateTodoList() {
     const tableBody = document.querySelector('.TaskList-table tbody');
     tableBody.innerHTML = ''
-    await populateTodoList()
+    await populateTodoListList()
 }
 
 async function onNewTodoSubmit(event){
