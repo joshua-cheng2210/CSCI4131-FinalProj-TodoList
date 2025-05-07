@@ -73,6 +73,24 @@ app.delete('/deletetodo/:id', (req, res) => {
   });
 });
 
+app.put('/updatetodo/:id', (req, res) => {
+    const todoID = req.params.id;
+    const { done } = req.body; 
+    console.log("updatetodo: ", todoID, done)
+
+    const sql = 'UPDATE todoList SET done = ? WHERE taskID = ?'
+    DB.query(sql, [done, todoID], (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ success: false});
+        } else if (result.affectedRows > 0) {
+            return res.status(200).json({ success: true});
+        } else {
+            return res.status(404).json({ success: false});
+        }
+    });
+});
+
 app.use(express.static(path.join(__dirname, 'static')));
 app.get('/TodoList.html', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'TodoList.html'));
