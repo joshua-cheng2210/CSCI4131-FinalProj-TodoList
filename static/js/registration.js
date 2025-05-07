@@ -27,6 +27,8 @@ async function onRegistrationSubmit(event){
             } else {
                 window.location.href = '/registration.html'; 
             }
+        } else {
+            window.location.href = '/registration.html'; 
         }
     } catch (error) {
         console.error(error);

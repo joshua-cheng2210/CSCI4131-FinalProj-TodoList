@@ -25,7 +25,7 @@ app.post('/registerAcc', (req, res) => {
     console.log("/registerAcc")
     console.log("req.body: ", req.body)
     const {username, email, password} = req.body; 
-    const sql = 'INSERT INTO todoList (username, email, password) VALUES (?, ?, ?)'; 
+    const sql = 'INSERT INTO Users (username, email, password) VALUES (?, ?, ?)'; 
     const values = [
         username,
         email,
@@ -34,6 +34,7 @@ app.post('/registerAcc', (req, res) => {
     
     DB.query(sql, values, (err, results) => {
       if (err) {
+        console.log(err)
         return res.status(500).json({ success: false});
       } else {
         return res.status(200).json({ success: true});
