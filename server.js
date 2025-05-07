@@ -25,7 +25,7 @@ app.post('/registerAcc', (req, res) => {
     console.log("/registerAcc")
     console.log("req.body: ", req.body)
     const {username, email, password} = req.body; 
-    const sql = 'INSERT INTO Users (username, email, password) VALUES (?, ?, ?)'; 
+    const sql = 'INSERT INTO Users (username, email, passwordHash) VALUES (?, ?, ?)'; 
     const values = [
         username,
         email,
