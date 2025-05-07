@@ -62,9 +62,9 @@ app.delete('/deletetodo/:id', (req, res) => {
   DB.query(`DELETE FROM todoList WHERE taskID = ?`, [todoID], (err, result) => {
       if (err) {
         console.log("failed to removed ", todoID)
-          res.status(500).json({ success: false});
+        res.status(500).json({ success: false});
       } else if (result.affectedRows > 0) {
-        console.log("successfully removed ", todoID)
+        console.log("successfully removed ", result)
         res.status(200).json({ success: true});
       } else {
         console.log("failed to removed ", todoID)
