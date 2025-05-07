@@ -41,9 +41,10 @@ app.post('/registerAcc', (req, res) => {
                 email,
                 passwordHash
             ];
+            console.log("newAcc: ", newAcc)
         });
     } catch (err) {
-        console.log(err)
+        console.log("hasing error: ",err)
         return 
     }
     
