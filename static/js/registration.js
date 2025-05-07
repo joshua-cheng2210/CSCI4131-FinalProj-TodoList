@@ -23,7 +23,7 @@ async function onRegistrationSubmit(event){
         if (response.ok) {
             const result = await response.json();
             if (result.success) {
-                window.location.href = 'login.html'; 
+                window.location.href = '/login.html'; 
             }
         }
     } catch (error) {
