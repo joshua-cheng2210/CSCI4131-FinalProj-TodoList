@@ -24,7 +24,7 @@ DB = mysql.createConnection(mysqlConfig);
 
 app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")
-  const sql = 'SELECT * FROM TodoList ORDER BY deadline';
+  const sql = 'SELECT * FROM todoList ORDER BY deadline';
   DB.query(sql, (err, results) => {
     if (err) {
       console.error("Database select error:", err);
