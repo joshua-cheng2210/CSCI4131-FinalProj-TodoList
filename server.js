@@ -41,21 +41,20 @@ app.post('/registerAcc', (req, res) => {
                 email,
                 passwordHash
             ];
-            console.log("newAcc: ", newAcc)
+            // console.log("newAcc: ", newAcc)
+            DB.query(sql, newAcc, (err, results) => {
+                if (err) {
+                  console.log(err)
+                  return res.status(500).json({ success: false });
+                } else {
+                  return res.status(200).json({ success: true });
+                }
+              });
         });
     } catch (err) {
         console.log("hasing error: ",err)
         return 
     }
-    
-    DB.query(sql, newAcc, (err, results) => {
-      if (err) {
-        console.log(err)
-        return res.status(500).json({ success: false });
-      } else {
-        return res.status(200).json({ success: true });
-      }
-    });
 });
 
 app.get('/getTodoList', (req, res) => {
