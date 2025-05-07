@@ -3,28 +3,9 @@ to connect to the mandatory personal UMN DB provided:
 '''194'''
 
 # create a todoList table
-
-CREATE TABLE todoList (
-    taskID INTEGER PRIMARY KEY AUTO_INCREMENT,
-    task VARCHAR(255) NOT NULL,
-    deadline DATETIME,
-    done BOOLEAN DEFAULT FALSE
-);
-
-# Todo functionalities
-- have filter feature (ex: by task, date)
-- maybe not use checklist (assignment say use flexbox)
-- have a remove all checked checkbox todos button feature
-- account 
-    - account creation
-    - account deletion
-    - pw encryption
-    - login and logout
-- rebuilt my sql table
-
 CREATE TABLE Users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
+    username VARCHAR(50) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     passwordHash VARCHAR(255) NOT NULL,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -38,6 +19,20 @@ CREATE TABLE todoList (
     done BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE 
 );
+
+
+# Todo functionalities
+- have filter feature (ex: by task, date)
+- maybe not use checklist (assignment say use flexbox)
+- have a remove all checked checkbox todos button feature
+- account 
+    - account creation
+    - account deletion
+    - pw encryption
+    - login and logout
+- rebuilt my sql table
+
+
 
 # design work
 - make it look simplistic
