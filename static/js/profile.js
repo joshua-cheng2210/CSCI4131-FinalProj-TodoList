@@ -54,7 +54,7 @@ async function getAccountInfo() {
 
 async function populateProfInfo() {
     console.log("populateProfInfo")
-    const tableBody = document.getElementById('profileInfo');
+    const tableBody = document.getElementById('userInfoTable');
     const row = document.createElement('tr');
 
     row.innerHTML = `
