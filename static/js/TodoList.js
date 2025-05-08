@@ -168,6 +168,7 @@ async function getAccountInfo() {
         });
 
         if (!response.ok) {
+            console.log("response.not ok")
             window.location.href = '/login.html';
         }
 
@@ -177,9 +178,11 @@ async function getAccountInfo() {
             console.log("inside getAccountInfo user: ", user)
 
         } else {
+            console.log("failed to init acc1")
             window.location.href = '/login.html';
         }
     } catch (error) {
+        console.log("failed to init acc2")
         console.error(error);
         window.location.href = '/login.html';
         return null;
