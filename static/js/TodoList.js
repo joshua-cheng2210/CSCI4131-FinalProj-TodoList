@@ -153,7 +153,7 @@ async function onNewTodoSubmit(event){
 async function addGreetings() {
     console.log("addGreetings")
     const title = document.getElementById('greeting');
-    console.log("user: ", user)
+    console.log("addGreetings user: ", user)
     title.textContent = `Hi, ${user.username}! Here is your To-Do List.`;
 }
 
@@ -169,6 +169,7 @@ async function getAccountInfo() {
 
         if (!response.ok) {
             console.log("response.not ok")
+            throw new Error("failed to get prof")
             window.location.href = '/login.html';
         }
 
@@ -176,14 +177,14 @@ async function getAccountInfo() {
         if (result.ok && result.success) {
             user = result.user
             console.log("inside getAccountInfo user: ", user)
-
         } else {
             console.log("failed to init acc1")
+            throw new Error("failed to get prof")
             window.location.href = '/login.html';
         }
     } catch (error) {
         console.log("failed to init acc2")
-        console.error(error);
+        console.log(error)
         window.location.href = '/login.html';
         return null;
     }
