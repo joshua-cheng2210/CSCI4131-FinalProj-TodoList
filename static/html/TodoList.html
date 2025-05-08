@@ -30,14 +30,15 @@
             </div>
 
             <div>
-                <table class="TaskList-table">
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-                <ul id="todoListItems" class="TaskList-list">
-                    
-                </ul>
+                <form id="todo-filter-form">
+                    <input type="text" id="filterInput" placeholder="Filter by task name">
+                    <button id="filterButton">Filter</button>
+                    <button id="cancelFilterButton">Cancel Filter</button>
+                </form>
+            </div>
+
+            <div>
+                <ul id="todoListItems" class="TaskList-list"></ul>
             </div>
         </div>
         <script src="TodoList.js"></script>

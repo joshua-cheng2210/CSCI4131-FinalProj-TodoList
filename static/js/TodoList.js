@@ -1,10 +1,11 @@
 var user;
 
-async function populateTodoListList() {
+async function populateTodoListList(filter="") {
     const listElement = document.getElementById('todoListItems'); 
+    listElement.innerHTML = ''
 
     try {
-        const response = await fetch('/getTodoList');
+        const response = await fetch(`/getTodoList?filter=${encodeURIComponent(filter)}`);
 
         let todos = await response.json();
         todos = todos.results; 
@@ -191,17 +192,7 @@ async function getAccountInfo() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    // don't need this since back end is using express-session
-
-    // user = JSON.parse(localStorage.getItem('user'));
-    // if (user && user !== undefined && user !== null) {
-    //     console.log("user: ", user)
-    //     addGreetings()
-    // } else {
-    //     window.location.href = '/login.html';
-    //     return
-    // }
+document.addEventListener('DOMContentLoaded', async () => {   
     try {
         await getAccountInfo()
         await addGreetings()
@@ -210,6 +201,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         const form = document.getElementById("todo-form")
         if (form){
             form.addEventListener("submit", onNewTodoSubmit)
+        }
+
+        const filterButton = document.getElementById('filterButton');
+        if (filterButton) {
+            filterButton.addEventListener('click', () => {
+                const filterInput = document.getElementById('filterInput').value.trim();
+                populateTodoListList(filterInput); 
+            });
+        }
+
+        const cancelFilterButton = document.getElementById('cancelFilterButton');
+        if (cancelFilterButton) {
+            cancelFilterButton.addEventListener('click', () => {
+                document.getElementById('filterInput').value = ''; 
+                populateTodoListList(); 
+            });
         }
     } catch (err) {
         console.log(err)
