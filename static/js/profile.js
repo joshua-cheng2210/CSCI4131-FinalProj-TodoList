@@ -65,14 +65,54 @@ async function getAccountInfo() {
 
 //     tableBody.appendChild(row);
 // }
+
+async function addDelAccBtn() {
+    console.log("addDelAccBtn")
+    const tableBody = document.getElementById('userInfoTable');
+    const delBtn = document.createElement('tr');
+    delBtn.innerHTML = `
+        <th></th>
+        <td><button id="DelAcc-btn">Delete Account</button></td>
+    `;
+
+    tableBody.appendChild(delBtn);
+
+    const deleteButton = document.getElementById('DelAcc-btn');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            await handleDeleteAccount();
+        });
+    }
+}
+
+async function handleDeleteAccount() {
+    try {
+        const response = await fetch('/deleteAccount', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
+
+        if (response.ok) {
+            window.location.href = '/login.html';
+        } else {
+            throw new Error("Failed to delete account.")
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 async function populateProfInfo() {
     console.log("populateProfInfo");
     const tableBody = document.getElementById('userInfoTable');
-
-    if (!user) {
-        console.error("User data is not available");
-        return;
-    }
 
     const usernameRow = document.createElement('tr');
     usernameRow.innerHTML = `

@@ -65,6 +65,64 @@ app.post('/registerAcc', (req, res) => {
     }
 });
 
+app.delete('/deleteAccount', (req, res) => {
+  const user = req.session.user;
+
+  if (!user) {
+      return res.status(401).json({ success: false });
+  }
+
+  const sql = 'DELETE FROM Users WHERE userID = ?';
+  DB.query(sql, [user.userID], (err, results) => {
+      if (err) {
+          console.error(err);
+          return res.status(500).json({ success: false });
+      }
+
+      req.session.destroy((err) => {
+          if (err) {
+              console.error(err);
+              return res.status(500).json({ success: false });
+          }
+          res.status(200).json({ success: true });
+      });
+  });
+});
+
+app.delete('/deleteAccount', (req, res) => {
+  const user = req.session.user;
+
+  if (!user) {
+      return res.status(401).json({ success: false });
+  }
+
+  const userID = user.userID;
+  
+  const deleteUserTasks = 'DELETE FROM todoList WHERE userID = ?';
+  DB.query(deleteUserTasks, [userID], (err, taskResults) => {
+      if (err) {
+          console.error(err);
+          return res.status(500).json({ success: false });
+      }
+      
+      const deleteUserAcc = 'DELETE FROM Users WHERE userID = ?';
+      DB.query(deleteUserAcc, [userID], (err, userResults) => {
+          if (err) {
+              return res.status(500).json({ success: false });
+          }
+
+          req.session.destroy((err) => {
+              if (err) {
+                  console.error("Error destroying session:", err);
+                  return res.status(500).json({ success: false });
+              }
+
+              res.status(200).json({ success: true });
+          });
+      });
+  });
+});
+
 app.get("/getProfInfo", (req,res) => {
   const user = req.session.user;
 
@@ -97,7 +155,7 @@ app.post('/login', async (req, res) => {
                 console.log("user: ", user)
                 const {passwordHash, ...acc_to_send} = user
                 req.session.user = acc_to_send
-                // console.log("acc_to_send", acc_to_send)
+                
                 console.log("req.session.user", req.session.user)
                 res.status(200).json({ success: true, user: acc_to_send});
             } else {
@@ -271,6 +329,6 @@ app.get('/profPic', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`server listening on http://localhost:${port}/`)
+  console.log(`server listening on http:
 })
   
