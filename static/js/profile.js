@@ -87,6 +87,12 @@ async function addDelAccBtn() {
 }
 
 async function handleDeleteAccount() {
+    const confirmation = window.confirm("press OK to delete Acc");
+
+    if (!confirmation) {
+        return;
+    }
+    
     try {
         const response = await fetch('/deleteAccount', {
             method: 'DELETE',
