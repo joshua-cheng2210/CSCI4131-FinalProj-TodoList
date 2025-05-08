@@ -185,6 +185,8 @@ app.get('/getTodoList', (req, res) => {
   const startDate = req.query.startDate || null;
   const endDate = req.query.endDate || null;
   const filterClause = `%${filter}%`;
+  
+  console.log("filter: ", filter, "startDate: ", startDate, "endDate: ", endDate)
 
   // building the sql querry
   let sql = 'SELECT * FROM todoList where userID = ? and task like ?';
