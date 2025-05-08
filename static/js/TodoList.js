@@ -151,7 +151,9 @@ async function onNewTodoSubmit(event){
 }
 
 async function addGreetings() {
+    console.log(addGreetings)
     const title = document.getElementById('greeting');
+    console.log(user)
     title.textContent = `Hi, ${user.username}! Here is your To-Do List.`;
 }
 
