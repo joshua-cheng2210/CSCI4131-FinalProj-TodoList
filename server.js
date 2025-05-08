@@ -114,9 +114,9 @@ app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")
   const user = req.session.user
   if (!user || user === undefined || user === null){
-    return res.status(401).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: null});
   } else if (!user.userID || user.userID === undefined || user.userID === null){
-    return res.status(401).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: null});
   }
   console.log("getTodoList user: ", user)
   const userID = user.userID
