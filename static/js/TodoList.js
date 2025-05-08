@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const filterButton = document.getElementById('filterButton');
         if (filterButton) {
-            filterButton.addEventListener('click', () => {
+            filterButton.addEventListener('click', (event) => {
+                event.preventDefault();
                 const filterInput = document.getElementById('filterInput').value.trim();
                 populateTodoListList(filterInput); 
             });
@@ -213,7 +214,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const cancelFilterButton = document.getElementById('cancelFilterButton');
         if (cancelFilterButton) {
-            cancelFilterButton.addEventListener('click', () => {
+            cancelFilterButton.addEventListener('click', (event) => {
+                event.preventDefault();
                 document.getElementById('filterInput').value = ''; 
                 populateTodoListList(); 
             });
