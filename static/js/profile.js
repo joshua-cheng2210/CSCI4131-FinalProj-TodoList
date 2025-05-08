@@ -69,7 +69,9 @@ async function populateProfInfo() {
 document.addEventListener('DOMContentLoaded', async () => {   
     try {
         await getAccountInfo()
+        console.log("getAccountInfo completed")
         await populateProfInfo()
+        console.log("populateProfInfo completed")
 
         const logoutButton = document.getElementById('logout-btn');
         if (logoutButton) {
