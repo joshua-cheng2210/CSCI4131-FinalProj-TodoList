@@ -52,18 +52,49 @@ async function getAccountInfo() {
     }
 }
 
-async function populateProfInfo() {
-    console.log("populateProfInfo")
-    const tableBody = document.getElementById('userInfoTable');
-    const row = document.createElement('tr');
+// async function populateProfInfo() {
+//     console.log("populateProfInfo")
+//     const tableBody = document.getElementById('userInfoTable');
+//     const row = document.createElement('tr');
 
-    row.innerHTML = `
+//     row.innerHTML = `
+//         <td>${user.username}</td>
+//         <td>${user.email}</td>
+//         <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+//     `;
+
+//     tableBody.appendChild(row);
+// }
+async function populateProfInfo() {
+    console.log("populateProfInfo");
+    const tableBody = document.getElementById('userInfoTable');
+
+    if (!user) {
+        console.error("User data is not available");
+        return;
+    }
+
+    const usernameRow = document.createElement('tr');
+    usernameRow.innerHTML = `
+        <th>Username</th>
         <td>${user.username}</td>
-        <td>${user.email}</td>
-        <td>${new Date(user.dateCreated).toLocaleDateString()}</td>
     `;
 
-    tableBody.appendChild(row);
+    const emailRow = document.createElement('tr');
+    emailRow.innerHTML = `
+        <th>Email</th>
+        <td>${user.email}</td>
+    `;
+
+    const dateCreatedRow = document.createElement('tr');
+    dateCreatedRow.innerHTML = `
+        <th>Date of Creation</th>
+        <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+    `;
+
+    tableBody.appendChild(usernameRow);
+    tableBody.appendChild(emailRow);
+    tableBody.appendChild(dateCreatedRow);
 }
 
 document.addEventListener('DOMContentLoaded', async () => {   
