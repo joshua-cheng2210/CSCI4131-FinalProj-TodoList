@@ -64,6 +64,16 @@ app.post('/registerAcc', (req, res) => {
     }
 });
 
+app.get("/getProfInfo", (req,res) => {
+  const user = req.session.user;
+
+  if (!user) {
+    return res.status(401).json({ success: false });
+  }
+
+  res.status(200).json({ success: true, user : user });
+})
+
 app.post('/login', async (req, res) => {
     console.log("/login POST")
     const { email, password } = req.body;
@@ -119,7 +129,6 @@ app.get('/getTodoList', (req, res) => {
   });
 });
 
-
 app.post('/addtodo', (req, res) => {
   console.log("/addtodo")
   console.log("req.body: ", req.body)
@@ -149,10 +158,11 @@ app.post('/addtodo', (req, res) => {
   });
 });
 
-app.delete('/deletetodo', (req, res) => {
+app.delete('/deletetodo/:id', (req, res) => {
   console.log("/deletetodo")
+  const todoID = req.params.id
   console.log("delete todo ID: ", todoID)
-  
+
   const user = req.session.user
   if (!user || user === undefined || user === null){
     return res.status(404).json({ success: false , results: Null});
@@ -176,7 +186,7 @@ app.delete('/deletetodo', (req, res) => {
 });
 
 app.put('/updatetodo', (req, res) => {
-  const { done } = req.body; 
+  const { done, todoID } = req.body; 
   console.log("updatetodo: ", todoID, done)
 
   const user = req.session.user

@@ -6,10 +6,6 @@ async function populateTodoListList() {
     try {
         const response = await fetch('/getTodoList');
 
-        if (!response.ok) {
-            throw new Error(`Failed to get todo. status -->${response.status}`);
-        }
-
         let todos = await response.json();
         todos = todos.results; 
 
@@ -64,12 +60,12 @@ async function populateTodoListList() {
 
 async function handleTaskDone(taskId, isChecked) {
     try {
-        const response = await fetch(`/updatetodo/${taskId}`, { 
+        const response = await fetch(`/updatetodo`, { 
             method: 'PUT', 
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ done: isChecked }),
+            body: JSON.stringify({ done: isChecked, taskId: taskId }),
         });
 
         const result = await response.json();
@@ -154,25 +150,60 @@ async function onNewTodoSubmit(event){
     }     
 }
 
-function addGreetings() {
+async function addGreetings() {
     const title = document.getElementById('greeting');
     title.textContent = `Hi, ${user.username}! Here is your To-Do List.`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    user = JSON.parse(localStorage.getItem('user'));
-    if (user && user !== undefined && user !== null) {
-        console.log("user: ", user)
-        addGreetings()
-    } else {
+async function getAccountInfo() {
+    try {
+        const response = await fetch('/getProfInfo', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            window.location.href = '/login.html';
+        }
+
+        const result = await response.json();
+        if (result.ok && result.success) {
+            user = result.user
+        } else {
+            window.location.href = '/login.html';
+        }
+    } catch (error) {
+        console.error(error);
         window.location.href = '/login.html';
-        return
+        return null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // don't need this since back end is using express-session
+
+    // user = JSON.parse(localStorage.getItem('user'));
+    // if (user && user !== undefined && user !== null) {
+    //     console.log("user: ", user)
+    //     addGreetings()
+    // } else {
+    //     window.location.href = '/login.html';
+    //     return
+    // }
+    try {
+        await getAccountInfo()
+        await addGreetings()
+        await populateTodoListList()
+
+        const form = document.getElementById("todo-form")
+        if (form){
+            form.addEventListener("submit", onNewTodoSubmit)
+        }
+    } catch (err) {
+        console.log(err)
     }
 
-    populateTodoListList()
-
-    const form = document.getElementById("todo-form")
-    if (form){
-        form.addEventListener("submit", onNewTodoSubmit)
-    }
+    
 });
