@@ -76,7 +76,9 @@ async function handleTaskDone(taskId, isChecked) {
             if (listItem) {
                 listItem.classList.toggle('task-completed', isChecked);
             }
-        } 
+        } else {
+            throw new Error("failed to update sql isChcked");
+        }
     } catch (error) {
         console.error(error);
         
