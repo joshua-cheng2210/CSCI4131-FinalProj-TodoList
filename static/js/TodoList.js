@@ -170,7 +170,6 @@ async function getAccountInfo() {
         if (!response.ok) {
             console.log("response.not ok")
             throw new Error("failed to get prof")
-            window.location.href = '/login.html';
         }
 
         const result = await response.json();
@@ -179,9 +178,7 @@ async function getAccountInfo() {
             user = result.user
             console.log("inside getAccountInfo user: ", user)
         } else {
-            console.log("failed to init acc1")
             throw new Error("failed to get prof")
-            window.location.href = '/login.html';
         }
     } catch (error) {
         console.log(error)
