@@ -187,7 +187,7 @@ app.get('/getTodoList', (req, res) => {
   const filterClause = `%${filter}%`;
 
   // building the sql querry
-  const sql = 'SELECT * FROM todoList where userID = ? and task like ?';
+  let sql = 'SELECT * FROM todoList where userID = ? and task like ?';
   const sqlvalues = [userID, filterClause]
   
   if (startDate) {
@@ -202,6 +202,7 @@ app.get('/getTodoList', (req, res) => {
     return res.status(400).json({ success: false });
   }
   sql += ' ORDER BY deadline';
+  console.log("sql")
 
   DB.query(sql, sqlvalues, (err, results) => {
     if (err) {
