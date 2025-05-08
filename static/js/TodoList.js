@@ -59,6 +59,8 @@ async function populateTodoListList() {
 }
 
 async function handleTaskDone(taskId, isChecked) {
+    console.log("handleTaskDone")
+    console.log(taskId, isChecked)
     try {
         const response = await fetch(`/updatetodo`, { 
             method: 'PUT', 
