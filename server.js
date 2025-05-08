@@ -202,7 +202,7 @@ app.get('/getTodoList', (req, res) => {
     return res.status(400).json({ success: false });
   }
   sql += ' ORDER BY deadline';
-  console.log("sql: ", sql)
+  console.log("sql: ", sql, "sqlvalues: ", sqlvalues)
 
   DB.query(sql, sqlvalues, (err, results) => {
     if (err) {
