@@ -23,7 +23,7 @@ CREATE TABLE todoList (
 
 # Todo functionalities
 - maybe not use checklist (assignment say use flexbox)
-- filte by deadlines
+- filter by deadlines
 
 # design work
 - make it look simplistic
