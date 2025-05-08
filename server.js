@@ -121,7 +121,7 @@ app.get('/getTodoList', (req, res) => {
   const userID = user.userID
 
   const sql = 'SELECT * FROM todoList where userID = ? ORDER BY deadline';
-  DB.query(sql, (err, [userID], results) => {
+  DB.query(sql, [userID], (err, results) => {
     if (err) {
       console.error("Database select error:", err);
       return res.status(500).json({ success: false , results: Null});
