@@ -113,9 +113,9 @@ app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")
   const user = req.session.user
   if (!user || user === undefined || user === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   } else if (!user.userID || user.userID === undefined || user.userID === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   }
   console.log("getTodoList user: ", user)
   const userID = user.userID
@@ -138,9 +138,9 @@ app.post('/addtodo', (req, res) => {
   console.log("req.body: ", req.body)
   const user = req.session.user
   if (!user || user === undefined || user === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   } else if (!user.userID || user.userID === undefined || user.userID === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   }
   const userID = user.userID
   
@@ -169,9 +169,9 @@ app.delete('/deletetodo/:id', (req, res) => {
 
   const user = req.session.user
   if (!user || user === undefined || user === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   } else if (!user.userID || user.userID === undefined || user.userID === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   }
   const userID = user.userID
 
@@ -195,9 +195,9 @@ app.put('/updatetodo', (req, res) => {
 
   const user = req.session.user
   if (!user || user === undefined || user === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   } else if (!user.userID || user.userID === undefined || user.userID === null){
-    return res.status(404).json({ success: false , results: Null});
+    return res.status(401).json({ success: false , results: Null});
   }
   const userID = user.userID
 

@@ -7,6 +7,11 @@ async function populateTodoListList(filter="") {
     try {
         const response = await fetch(`/getTodoList?filter=${encodeURIComponent(filter)}`);
 
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
+
         let todos = await response.json();
         todos = todos.results; 
 
@@ -16,6 +21,7 @@ async function populateTodoListList(filter="") {
             console.error("Error: Expected an array of todos, but received:", todos);
             todos = []; 
         }
+
         todos.forEach(todo => {
             const listItem = document.createElement('li'); 
             listItem.classList.add('todo-item'); 
@@ -71,6 +77,11 @@ async function handleTaskDone(taskId, isChecked) {
             body: JSON.stringify({ done: isChecked, taskId: taskId }),
         });
 
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
+
         const result = await response.json();
         if (result.success) {
             const listItem = document.querySelector(`.todo-item[data-task-id="${taskId}"]`);
@@ -95,6 +106,12 @@ async function handleTaskDelete(taskId) {
         const response = await fetch(`/deletetodo/${taskId}`, {
             method: 'DELETE',
         });
+
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
+
         if (!response.ok) {
             updateTodoList()
         }
@@ -138,6 +155,11 @@ async function onNewTodoSubmit(event){
             },
             body: JSON.stringify(formData), 
         });
+        
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
 
         if (!response.ok) {
             const errorData = await response.json(); 
@@ -171,6 +193,11 @@ async function getAccountInfo() {
                 'Content-Type': 'application/json',
             },
         });
+        
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
 
         if (!response.ok) {
             console.log("response.not ok")
