@@ -12,7 +12,7 @@ async function populateTodoListList(task="", startDate = "", endDate = "") {
             endDate: endDate,
         });
 
-        const response = await fetch(`/getTodoList?filter=${queryParams.toString()}`);
+        const response = await fetch(`/getTodoList?${queryParams.toString()}`);
 
         if (response.status === 401) {
             window.location.href = '/login.html';
