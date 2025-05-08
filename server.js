@@ -117,7 +117,7 @@ app.get('/getTodoList', (req, res) => {
   } else if (!user.userID || user.userID === undefined || user.userID === null){
     return res.status(404).json({ success: false , results: Null});
   }
-  console.log("getTodoList user: ". user)
+  console.log("getTodoList user: ", user)
   const userID = user.userID
 
   const sql = 'SELECT * FROM todoList where userID = ? ORDER BY deadline';
