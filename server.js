@@ -181,7 +181,7 @@ app.get('/getTodoList', (req, res) => {
   console.log("getTodoList user: ", user)
 
   const userID = user.userID
-  const task = req.query.task || null;
+  const task = req.query.task.trim() || null;
   const startDate = req.query.startDate || null;
   const endDate = req.query.endDate || null;
 
@@ -193,7 +193,7 @@ app.get('/getTodoList', (req, res) => {
 
   if (task) {
     sql += ` and task like ?`
-    sqlvalues.push(task);
+    sqlvalues.push(`%${task}%`);
   }
   
   if (startDate) {
