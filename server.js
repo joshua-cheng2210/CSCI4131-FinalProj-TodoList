@@ -95,8 +95,9 @@ app.post('/login', async (req, res) => {
             if (match) {
                 console.log("user: ", user)
                 const {passwordHash, ...acc_to_send} = user
-                console.log("acc_to_send", acc_to_send)
                 req.session.user = acc_to_send
+                // console.log("acc_to_send", acc_to_send)
+                console.log("req.session.user", req.session.user)
                 res.status(200).json({ success: true, user: acc_to_send});
             } else {
                 res.status(401).json({ success: false});
