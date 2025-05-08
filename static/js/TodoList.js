@@ -1,4 +1,5 @@
 var user;
+
 async function populateTodoListList() {
     const listElement = document.getElementById('todoListItems'); 
 
@@ -155,7 +156,7 @@ async function onNewTodoSubmit(event){
 
 function addGreetings() {
     const title = document.getElementById('greeting');
-    title.textContent = `Welcome, ${user.username}! Here is your To-Do List.`;
+    title.textContent = `Hi, ${user.username}! Here is your To-Do List.`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

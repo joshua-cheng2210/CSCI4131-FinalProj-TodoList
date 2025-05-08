@@ -28,10 +28,6 @@ CREATE TABLE todoList (
 - account 
     - account creation
     - account deletion
-    - pw encryption
-    - login and logout
-- rebuilt my sql table
-
 
 
 # design work

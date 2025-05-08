@@ -5,10 +5,17 @@ const express = require("express");
 const app = express(); 
 const path = require('path');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true}));
 const port = 7647
+
+app.use(session({
+    secret: 'CSCI4131FinalProj-Todo', 
+    resave: false, 
+    saveUninitialized: false, 
+}));
 
 var mysql = require("mysql");
 let connection = null
@@ -41,7 +48,7 @@ app.post('/registerAcc', (req, res) => {
                 email,
                 passwordHash
             ];
-            // console.log("newAcc: ", newAcc)
+            
             DB.query(sql, newAcc, (err, results) => {
                 if (err) {
                   console.log(err)
@@ -79,7 +86,7 @@ app.post('/login', async (req, res) => {
                 console.log("user: ", user)
                 const {passwordHash, ...acc_to_send} = user
                 console.log("acc_to_send", acc_to_send)
-
+                req.session.user = acc_to_send
                 res.status(200).json({ success: true, user: acc_to_send});
             } else {
                 res.status(401).json({ success: false});
@@ -93,8 +100,16 @@ app.post('/login', async (req, res) => {
 
 app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")
-  const sql = 'SELECT * FROM todoList ORDER BY deadline';
-  DB.query(sql, (err, results) => {
+  const user = req.session.user
+  if (!user || user === undefined || user === null){
+    return res.status(404).json({ success: false , results: Null});
+  } else if (!user.userID || user.userID === undefined || user.userID === null){
+    return res.status(404).json({ success: false , results: Null});
+  }
+  const userID = user.userID
+
+  const sql = 'SELECT * FROM todoList where userID = ? ORDER BY deadline';
+  DB.query(sql, (err, [userID], results) => {
     if (err) {
       console.error("Database select error:", err);
       return res.status(500).json({ success: false , results: Null});
@@ -106,10 +121,20 @@ app.get('/getTodoList', (req, res) => {
 
 
 app.post('/addtodo', (req, res) => {
+  console.log("/addtodo")
   console.log("req.body: ", req.body)
+  const user = req.session.user
+  if (!user || user === undefined || user === null){
+    return res.status(404).json({ success: false , results: Null});
+  } else if (!user.userID || user.userID === undefined || user.userID === null){
+    return res.status(404).json({ success: false , results: Null});
+  }
+  const userID = user.userID
+  
   const {task, deadline, done} = req.body; 
-  const sql = 'INSERT INTO todoList (task, deadline, done) VALUES (?, ?, ?)'; 
+  const sql = 'INSERT INTO todoList (userID, task, deadline, done) VALUES (?, ?, ?, ?)'; 
   const values = [
+    userID,
     task,
     deadline,
     done 
@@ -124,11 +149,19 @@ app.post('/addtodo', (req, res) => {
   });
 });
 
-app.delete('/deletetodo/:id', (req, res) => {
-  const todoID = req.params.id;
+app.delete('/deletetodo', (req, res) => {
+  console.log("/deletetodo")
   console.log("delete todo ID: ", todoID)
+  
+  const user = req.session.user
+  if (!user || user === undefined || user === null){
+    return res.status(404).json({ success: false , results: Null});
+  } else if (!user.userID || user.userID === undefined || user.userID === null){
+    return res.status(404).json({ success: false , results: Null});
+  }
+  const userID = user.userID
 
-  DB.query(`DELETE FROM todoList WHERE taskID = ?`, [todoID], (err, result) => {
+  DB.query(`DELETE FROM todoList WHERE taskID = ? AND userID = ?`, [todoID, userID], (err, result) => {
       if (err) {
         console.log("failed to removed ", err)
         return res.status(500).json({ success: false});
@@ -142,21 +175,39 @@ app.delete('/deletetodo/:id', (req, res) => {
   });
 });
 
-app.put('/updatetodo/:id', (req, res) => {
-    const todoID = req.params.id;
-    const { done } = req.body; 
-    console.log("updatetodo: ", todoID, done)
+app.put('/updatetodo', (req, res) => {
+  const { done } = req.body; 
+  console.log("updatetodo: ", todoID, done)
 
-    const sql = 'UPDATE todoList SET done = ? WHERE taskID = ?'
-    DB.query(sql, [done, todoID], (err, result) => {
+  const user = req.session.user
+  if (!user || user === undefined || user === null){
+    return res.status(404).json({ success: false , results: Null});
+  } else if (!user.userID || user.userID === undefined || user.userID === null){
+    return res.status(404).json({ success: false , results: Null});
+  }
+  const userID = user.userID
+
+  const sql = 'UPDATE todoList SET done = ? WHERE taskID = ? and userID = ?'
+  DB.query(sql, [done, todoID, userID], (err, result) => {
+    if (err) {
+        console.log(err);
+        return res.status(500).json({ success: false});
+    } else if (result.affectedRows > 0) {
+        return res.status(200).json({ success: true});
+    } else {
+        return res.status(404).json({ success: false});
+    }
+  });
+});
+
+app.post('/logout', (req, res) => {
+    console.log("/logout")
+    req.session.destroy((err) => {
         if (err) {
-            console.log(err);
-            return res.status(500).json({ success: false});
-        } else if (result.affectedRows > 0) {
-            return res.status(200).json({ success: true});
-        } else {
-            return res.status(404).json({ success: false});
+            console.error(err);
+            return res.status(500).json({ success: false });
         }
+        res.status(200).json({ success: true });
     });
 });
 
@@ -194,6 +245,6 @@ app.get('/registration.js', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`server listening on http://localhost:${port}/`)
+  console.log(`server listening on http:
 });
 
