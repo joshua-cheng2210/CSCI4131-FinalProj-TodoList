@@ -181,7 +181,7 @@ app.get('/getTodoList', (req, res) => {
   console.log("getTodoList user: ", user)
 
   const userID = user.userID
-  const filter = req.query.filter
+  const filter = req.query.filter || null;
   const startDate = req.query.startDate || null;
   const endDate = req.query.endDate || null;
   const filterClause = `%${filter}%`;
