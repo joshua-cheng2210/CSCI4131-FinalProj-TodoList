@@ -17,7 +17,7 @@ async function populateTodoListList(filter="", startDate = "", endDate = "") {
         });
         
         const response = await fetch(`/getTodoList?filter=${queryParams.toString()}`);
-        
+
         let todos = await response.json();
         todos = todos.results; 
 
@@ -252,8 +252,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (filterButton) {
             filterButton.addEventListener('click', (event) => {
                 event.preventDefault();
+
                 const filterInput = document.getElementById('filterInput').value.trim();
-                populateTodoListList(filterInput); 
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+
+                if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+                    alert("starting deadline filter must be after ending deadline filter");
+                    return; 
+                }
+
+                populateTodoListList(filterInput, startDate, endDate);
             });
         }
 

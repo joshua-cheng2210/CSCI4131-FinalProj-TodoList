@@ -170,19 +170,40 @@ app.post('/login', async (req, res) => {
 
 app.get('/getTodoList', (req, res) => {
   console.log("getTodoList")
+
   const user = req.session.user
   if (!user || user === undefined || user === null){
     return res.status(401).json({ success: false , results: null});
   } else if (!user.userID || user.userID === undefined || user.userID === null){
     return res.status(401).json({ success: false , results: null});
   }
+
   console.log("getTodoList user: ", user)
+
   const userID = user.userID
   const filter = req.query.filter
+  const startDate = req.query.startDate || null;
+  const endDate = req.query.endDate || null;
   const filterClause = `%${filter}%`;
 
-  const sql = 'SELECT * FROM todoList where userID = ? and task like ? ORDER BY deadline';
-  DB.query(sql, [userID, filterClause], (err, results) => {
+  // building the sql querry
+  const sql = 'SELECT * FROM todoList where userID = ? and task like ?';
+  const sqlvalues = [userID, filterClause]
+  
+  if (startDate) {
+    sql += ' AND deadline >= ?';
+    sqlvalues.push(startDate);
+  }
+  if (endDate) {
+    sql += ' AND deadline <= ?';
+    sqlvalues.push(endDate);
+  }
+  if (startDate && endDate && new Date(endDate) < new Date(startDate)) { // shouldn't be true since i checked it on client end
+    return res.status(400).json({ success: false });
+  }
+  sql += ' ORDER BY deadline';
+
+  DB.query(sql, sqlvalues, (err, results) => {
     if (err) {
       console.error("Database select error:", err);
       return res.status(500).json({ success: false , results: Null});
