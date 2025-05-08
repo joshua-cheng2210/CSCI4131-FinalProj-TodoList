@@ -155,7 +155,7 @@ async function onNewTodoSubmit(event){
 
 document.addEventListener('DOMContentLoaded', () => {
     user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
+    if (user && user !== undefined && user !== null) {
         console.log("user: ", user)
     } else {
         window.location.href = '/login.html';
