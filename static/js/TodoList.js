@@ -2,7 +2,7 @@ var user;
 
 async function populateTodoListList(filter="", startDate = "", endDate = "") {
     const listElement = document.getElementById('todoListItems'); 
-    console.log(filter, startDate, endDate)
+    console.log("filter: ", filter, "startDate: ", startDate, "endDate: ", endDate)
     listElement.innerHTML = ''
 
     try {
