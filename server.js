@@ -256,6 +256,6 @@ app.get('/registration.js', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`server listening on http:`)
+  console.log(`server listening on http://localhost:${port}/`)
 })
   
