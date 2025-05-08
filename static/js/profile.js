@@ -26,7 +26,7 @@ async function getAccountInfo() {
                 'Content-Type': 'application/json',
             },
         });
-
+        console.log("getAccountInfo response.status: ", response.status)
         if (response.status === 401) {
             window.location.href = '/login.html';
             return;
