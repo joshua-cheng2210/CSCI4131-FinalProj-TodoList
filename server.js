@@ -184,13 +184,12 @@ app.get('/getTodoList', (req, res) => {
   const task = req.query.task || null;
   const startDate = req.query.startDate || null;
   const endDate = req.query.endDate || null;
-  const filterClause = `%${filter}%`;
 
   console.log("task: ", task, "startDate: ", startDate, "endDate: ", endDate)
 
   // building the sql querry
   let sql = 'SELECT * FROM todoList where userID = ?';
-  const sqlvalues = [userID, filterClause]
+  const sqlvalues = [userID]
 
   if (task) {
     sql += ` and task like ?`
@@ -209,7 +208,7 @@ app.get('/getTodoList', (req, res) => {
   if (startDate && endDate && new Date(endDate) < new Date(startDate)) { // shouldn't be true since i checked it on client end
     return res.status(400).json({ success: false });
   }
-  
+
   sql += ' ORDER BY deadline';
   console.log("sql: ", sql, "sqlvalues: ", sqlvalues)
 
