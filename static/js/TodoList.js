@@ -158,6 +158,7 @@ async function addGreetings() {
 }
 
 async function getAccountInfo() {
+    console.log("getAccountInfo")
     try {
         const response = await fetch('/getProfInfo', {
             method: 'GET',
@@ -173,6 +174,8 @@ async function getAccountInfo() {
         const result = await response.json();
         if (result.ok && result.success) {
             user = result.user
+            console.log("inside getAccountInfo user: ", user)
+
         } else {
             window.location.href = '/login.html';
         }
