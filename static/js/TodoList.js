@@ -1,13 +1,13 @@
 var user;
 
-async function populateTodoListList(filter="", startDate = "", endDate = "") {
+async function populateTodoListList(task="", startDate = "", endDate = "") {
     const listElement = document.getElementById('todoListItems'); 
-    console.log("filter: ", filter, "startDate: ", startDate, "endDate: ", endDate)
+    console.log("task: ", task, "startDate: ", startDate, "endDate: ", endDate)
     listElement.innerHTML = ''
 
     try {
         const queryParams = new URLSearchParams({
-            filter: filter,
+            task: task,
             startDate: startDate,
             endDate: endDate,
         });
