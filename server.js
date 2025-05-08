@@ -188,8 +188,8 @@ app.delete('/deletetodo/:id', (req, res) => {
 });
 
 app.put('/updatetodo', (req, res) => {
-  const { done, todoID } = req.body; 
-  console.log("updatetodo: ", todoID, done)
+  const { done, taskId } = req.body; 
+  console.log("updatetodo: ", taskId, done)
 
   const user = req.session.user
   if (!user || user === undefined || user === null){
@@ -200,7 +200,7 @@ app.put('/updatetodo', (req, res) => {
   const userID = user.userID
 
   const sql = 'UPDATE todoList SET done = ? WHERE taskID = ? and userID = ?'
-  DB.query(sql, [done, todoID, userID], (err, result) => {
+  DB.query(sql, [done, taskId, userID], (err, result) => {
     if (err) {
         console.log(err);
         return res.status(500).json({ success: false});
