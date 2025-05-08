@@ -153,10 +153,16 @@ async function onNewTodoSubmit(event){
     }     
 }
 
+function addGreetings() {
+    const title = document.getElementById('greeting');
+    title.textContent = `Welcome, ${user.username}! Here is your To-Do List.`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     user = JSON.parse(localStorage.getItem('user'));
     if (user && user !== undefined && user !== null) {
         console.log("user: ", user)
+        addGreetings()
     } else {
         window.location.href = '/login.html';
         return
