@@ -5,6 +5,8 @@ async function populateTodoListList(filter="", startDate = "", endDate = "") {
     listElement.innerHTML = ''
 
     try {
+        const response = await fetch(`/getTodoList?filter=${queryParams.toString()}`);
+
         if (response.status === 401) {
             window.location.href = '/login.html';
             return;
@@ -15,8 +17,6 @@ async function populateTodoListList(filter="", startDate = "", endDate = "") {
             startDate: startDate,
             endDate: endDate,
         });
-        
-        const response = await fetch(`/getTodoList?filter=${queryParams.toString()}`);
 
         let todos = await response.json();
         todos = todos.results; 
