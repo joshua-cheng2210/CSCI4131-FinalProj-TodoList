@@ -1,26 +1,27 @@
 var user;
 
-async function populateTodoListList(filter="") {
+async function populateTodoListList(filter="", startDate = "", endDate = "") {
     const listElement = document.getElementById('todoListItems'); 
     listElement.innerHTML = ''
 
     try {
-        const response = await fetch(`/getTodoList?filter=${encodeURIComponent(filter)}`);
-
         if (response.status === 401) {
             window.location.href = '/login.html';
             return;
         }
-
+        
+        const queryParams = new URLSearchParams({
+            filter: filter,
+            startDate: startDate,
+            endDate: endDate,
+        });
+        
+        const response = await fetch(`/getTodoList?filter=${queryParams.toString()}`);
+        
         let todos = await response.json();
         todos = todos.results; 
 
         console.log("response from front end: ", todos);
-
-        if (!Array.isArray(todos)) {
-            console.error("Error: Expected an array of todos, but received:", todos);
-            todos = []; 
-        }
 
         todos.forEach(todo => {
             const listItem = document.createElement('li'); 

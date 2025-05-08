@@ -23,10 +23,7 @@ CREATE TABLE todoList (
 
 # Todo functionalities
 - maybe not use checklist (assignment say use flexbox)
-- account 
-    - account creation
-    - account deletion
-
+- filte by deadlines
 
 # design work
 - make it look simplistic
@@ -34,6 +31,4 @@ CREATE TABLE todoList (
 - the todo-deadline text wil be in red if the deadline is missed and the checkbox is not checked; orange if the deadline is close like within 1 hr
 - other styling
 - think about varying screen size
-
-# bugs
-- when registering a new acc, on submit, the pw will be posted in the url
+- separate the server functions into account realted functions and app utilities functions
