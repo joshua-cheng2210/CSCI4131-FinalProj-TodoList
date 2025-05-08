@@ -37,4 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerForm) {
         registerForm.addEventListener('submit', onLoginSubmit)
     }
+
+    const registrationButton = document.getElementById('registration-btn');
+    if (registrationButton) {
+        registrationButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.location.href = '/registration.html'; 
+        });
+    }
 });

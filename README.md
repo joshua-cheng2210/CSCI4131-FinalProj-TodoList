@@ -22,7 +22,6 @@ CREATE TABLE todoList (
 
 
 # Todo functionalities
-- have filter feature (ex: by task, date)
 - maybe not use checklist (assignment say use flexbox)
 - call /logout when loging out
 - account 

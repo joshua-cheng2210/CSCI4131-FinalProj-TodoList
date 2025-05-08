@@ -193,7 +193,7 @@ async function getAccountInfo() {
                 'Content-Type': 'application/json',
             },
         });
-        
+
         if (response.status === 401) {
             window.location.href = '/login.html';
             return;
@@ -216,6 +216,23 @@ async function getAccountInfo() {
         console.log(error)
         window.location.href = '/login.html';
         return null;
+    }
+}
+
+async function handleLogout() {
+    try {
+        const response = await fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            window.location.href = '/login.html'; 
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -247,9 +264,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 populateTodoListList(); 
             });
         }
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                handleLogout(); 
+            });
+        }
     } catch (err) {
         console.log(err)
     }
-
-    
 });
