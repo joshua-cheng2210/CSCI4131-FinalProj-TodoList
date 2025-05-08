@@ -1,0 +1,91 @@
+var user;
+
+async function handleLogout() {
+    try {
+        const response = await fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            window.location.href = '/login.html'; 
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function getAccountInfo() {
+    console.log("getAccountInfo")
+    try {
+        const response = await fetch('/getProfInfo', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.status === 401) {
+            window.location.href = '/login.html';
+            return;
+        }
+
+        if (!response.ok) {
+            console.log("response.not ok")
+            throw new Error("failed to get prof")
+        }
+
+        const result = await response.json();
+        console.log("result: ", result)
+        if (result.success) {
+            user = result.user
+            console.log("inside getAccountInfo user: ", user)
+        } else {
+            throw new Error("failed to get prof")
+        }
+    } catch (error) {
+        console.log(error)
+        window.location.href = '/login.html';
+        return null;
+    }
+}
+
+async function populateProfInfo() {
+    const tableBody = document.getElementById('profileInfo');
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${new Date(user.dateCreated).toLocaleDateString()}</td>
+    `;
+
+    tableBody.appendChild(row);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {   
+    try {
+        await getAccountInfo()
+        await populateProfInfo()
+
+        const logoutButton = document.getElementById('logout-btn');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                handleLogout(); 
+            });
+        }
+
+        const homePageButton = document.getElementById('todoList-btn');
+        if (homePageButton) {
+            homePageButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.location.href = '/TodoList.html'; 
+            });
+        }
+    } catch (err) {
+        console.log(err)
+    }
+});

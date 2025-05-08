@@ -9,6 +9,7 @@ const session = require('express-session');
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, 'static')));
 const port = 7647
 
 app.use(session({
@@ -225,7 +226,6 @@ app.post('/logout', (req, res) => {
     });
 });
 
-app.use(express.static(path.join(__dirname, 'static')));
 app.get('/TodoList.html', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'TodoList.html'));
 });
@@ -236,7 +236,6 @@ app.get('/TodoList.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'TodoList.js'));
 });
 
-app.use(express.static(path.join(__dirname, 'static')));
 app.get('/login.html', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'login.html'));
 });
@@ -247,7 +246,6 @@ app.get('/login.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'login.js'));
 });
 
-app.use(express.static(path.join(__dirname, 'static')));
 app.get('/registration.html', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'registration.html'));
 });
@@ -256,6 +254,20 @@ app.get('/registration.css', (req, res) => {
 });
 app.get('/registration.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'registration.js'));
+});
+
+app.get('/profile.html', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'html', 'profile.html'));
+});
+app.get('/profile.css', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'profile.css'));
+});
+app.get('/profile.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static', 'js', 'profile.js'));
+});
+
+app.get('/profPic', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static', 'pic', 'profPic.webp'));
 });
 
 app.listen(port, () => {

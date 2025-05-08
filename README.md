@@ -23,7 +23,6 @@ CREATE TABLE todoList (
 
 # Todo functionalities
 - maybe not use checklist (assignment say use flexbox)
-- call /logout when loging out
 - account 
     - account creation
     - account deletion

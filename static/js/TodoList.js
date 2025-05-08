@@ -264,11 +264,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 populateTodoListList(); 
             });
         }
-        const logoutButton = document.getElementById('logoutButton');
+        const logoutButton = document.getElementById('logout-btn');
         if (logoutButton) {
             logoutButton.addEventListener('click', (event) => {
                 event.preventDefault();
                 handleLogout(); 
+            });
+        }
+
+        const accountButton = document.getElementById('Account-btn');
+        if (accountButton) {
+            accountButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.location.href = '/profile.html'; 
             });
         }
     } catch (err) {
