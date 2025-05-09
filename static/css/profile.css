@@ -74,7 +74,7 @@
 
 #del-btn-cell { 
     display: flex;
-    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 #DelAcc-btn {
