@@ -72,7 +72,7 @@ async function addDelAccBtn() {
     const delBtn = document.createElement('tr');
     delBtn.innerHTML = `
         <th></th>
-        <td><button id="DelAcc-btn">Delete Account</button></td>
+        <td id="del-btn-cell"><button id="DelAcc-btn">Delete Account</button></td>
     `;
 
     tableBody.appendChild(delBtn);
@@ -123,7 +123,7 @@ async function populateProfInfo() {
     const usernameRow = document.createElement('tr');
     usernameRow.innerHTML = `
         <th>Username</th>
-        <td id="del-btn-cell">${user.username}</td>
+        <td>${user.username}</td>
     `;
 
     const emailRow = document.createElement('tr');
