@@ -50,10 +50,6 @@ button:hover {
     display: flex; 
 }
 
-#registration-btn{
-    margin-right: 0.5em;
-}
-
 .nav-bar button {
     background-color: #ffdfdb; 
     color: #062e3f;            
@@ -118,7 +114,7 @@ form button {
 
 .Login-Page {
     padding: 2em;
-    border: 3px solid black; /* Example: 2px wide, solid, using your text color */
+    border: 3px solid black; 
     border-radius: 3px;
 }
 .Login-Page p {
