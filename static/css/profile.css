@@ -74,7 +74,8 @@
 
 #del-btn-cell { 
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
 #DelAcc-btn {
@@ -82,7 +83,8 @@
     color: white; 
     padding: 0.6em 1.2em; 
     font-size: 0.9em; 
-    
+    padding-top: 1em;
+    padding-bottom: 0.5em;
 }
 
 #DelAcc-btn:hover {
