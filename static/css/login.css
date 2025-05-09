@@ -4,3 +4,7 @@
 #registration-btn{
     margin-right: 0.5em;
 }
+
+#login-email {
+    width: auto;
+}
