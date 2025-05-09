@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         //     createdAt: '2025-05-07T23:27:39.000Z'
         // }
         await populateProfInfo()
+        await addDelAccBtn()
         console.log("populateProfInfo completed")
         const logoutButton = document.getElementById('logout-btn');
         if (logoutButton) {
