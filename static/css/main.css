@@ -29,6 +29,7 @@ button:hover {
 
 .nav-bar {
     background-color: #062e3f; 
+    background-image: linear-gradient(to top right, #575656, #062e3f);
     
     padding: 1.0rem 0.8rem;   
     width: 100%;
