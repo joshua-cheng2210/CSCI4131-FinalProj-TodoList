@@ -1,1 +1,73 @@
-@import url("main.css");
+@import url("main.css"); 
+
+.profileInfo {
+    width: 90%; 
+    max-width: 650px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    padding: 2em;
+    border: 2px solid #ffdfdb; 
+    border-radius: 17px; 
+    background-color: rgba(0, 0, 0, 0.1); 
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  */
+    color: #ffdfdb; 
+}
+
+.profileInfo h1 {
+    text-align: center;
+    color: #ffdfdb; 
+    margin-top: 0; 
+    margin-bottom: 1.5em;
+    font-size: 2.2em; 
+    border-bottom: 2px solid #ffdfdb; 
+    padding-bottom: 0.5em;
+}
+
+.profileInfo table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 1em;
+}
+
+.profileInfo th, .profileInfo td {
+    text-align: left;
+    padding: 0.8em 1em; 
+    border-bottom: 1px solid rgba(255, 223, 219, 0.3); 
+}
+
+.profileInfo th { 
+    color: #f0a099; 
+    font-weight: 600; 
+    width: 35%; 
+}
+
+.profileInfo td { 
+    color: #ffdfdb; 
+    word-break: break-word; 
+}
+
+.profileInfo tr:last-child th,
+.profileInfo tr:last-child td {
+    border-bottom: none;
+}
+
+.profileInfo button {
+    background-color: #ffdfdb; 
+    color: #062e3f;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1em; 
+    padding: 0.7em 1.5em;
+    border: none;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+    margin-top: 1.5em; 
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profileInfo button:hover {
+    background-color: #575656; 
+    color: #ffdfdb;
+}

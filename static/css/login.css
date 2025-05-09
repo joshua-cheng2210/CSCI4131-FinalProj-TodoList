@@ -8,3 +8,12 @@
 #login-email {
     width: auto;
 }
+
+.Login-Page {
+    padding: 2em;
+    border: 3px solid black; 
+    border-radius: 3px;
+}
+.Login-Page p {
+    margin-bottom: 0px;
+}

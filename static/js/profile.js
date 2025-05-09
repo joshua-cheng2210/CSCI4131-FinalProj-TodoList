@@ -154,9 +154,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         await getAccountInfo()
         console.log("getAccountInfo completed")
+        // user = {
+        //     userID: 4,
+        //     username: 'joshua',
+        //     email: 'chengjoshua22@gmail.com',
+        //     createdAt: '2025-05-07T23:27:39.000Z'
+        // }
         await populateProfInfo()
         console.log("populateProfInfo completed")
-
         const logoutButton = document.getElementById('logout-btn');
         if (logoutButton) {
             logoutButton.addEventListener('click', (event) => {

@@ -22,6 +22,7 @@ CREATE TABLE todoList (
 
 # Todo functionalities
 - maybe not use checklist (assignment say use flexbox)
+- account delete button noy showing up
 
 # design work
 - make it look simplistic
