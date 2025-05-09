@@ -1,8 +1,1 @@
 @import url("main.css");
-
-.nav-links button{
-    list-style: none; 
-    margin: 0;
-    margin-right: 0.5em;
-    display: flex; 
-}
