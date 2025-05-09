@@ -9,7 +9,7 @@
     border: 2px solid #ffdfdb; 
     border-radius: 17px; 
     background-color: rgba(0, 0, 0, 0.1); 
-    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  */
+    
     color: #ffdfdb; 
 }
 
@@ -70,4 +70,21 @@
 .profileInfo button:hover {
     background-color: #575656; 
     color: #ffdfdb;
+}
+.profileInfo td:has(#DelAcc-btn) { 
+    text-align: right;
+}
+
+#DelAcc-btn {
+    background-color: #dc3545; 
+    color: white; 
+    padding: 0.6em 1.2em; 
+    font-size: 0.9em; 
+    
+}
+
+#DelAcc-btn:hover {
+    background-color: #c82333; 
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
