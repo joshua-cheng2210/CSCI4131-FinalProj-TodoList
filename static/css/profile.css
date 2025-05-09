@@ -73,7 +73,8 @@
 }
 
 #del-btn-cell { 
-    text-align: right;
+    display: flex;
+    align-items: flex-end;
 }
 
 #DelAcc-btn {
