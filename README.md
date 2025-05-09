@@ -20,10 +20,8 @@ CREATE TABLE todoList (
     FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE 
 );
 
-
 # Todo functionalities
 - maybe not use checklist (assignment say use flexbox)
-- filter by deadlines
 
 # design work
 - make it look simplistic
