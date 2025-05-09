@@ -354,6 +354,9 @@ app.get('/profile.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'js', 'profile.js'));
 });
 
+app.get('/main.css', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'static', 'css', 'main.css'));
+});
 app.get('/profPic', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'pic', 'profPic.webp'));
 });
