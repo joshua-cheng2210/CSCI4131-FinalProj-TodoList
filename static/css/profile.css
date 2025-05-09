@@ -71,7 +71,8 @@
     background-color: #575656; 
     color: #ffdfdb;
 }
-.profileInfo td:has(#DelAcc-btn) { 
+
+#del-btn-cell { 
     text-align: right;
 }
 

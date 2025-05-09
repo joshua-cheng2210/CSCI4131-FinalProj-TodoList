@@ -123,7 +123,7 @@ async function populateProfInfo() {
     const usernameRow = document.createElement('tr');
     usernameRow.innerHTML = `
         <th>Username</th>
-        <td>${user.username}</td>
+        <td id="del-btn-cell">${user.username}</td>
     `;
 
     const emailRow = document.createElement('tr');
