@@ -135,7 +135,14 @@ async function populateProfInfo() {
     const dateCreatedRow = document.createElement('tr');
     dateCreatedRow.innerHTML = `
         <th>Date of Creation</th>
-        <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+        <td>${new Date(user.createdAt).toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long', 
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        })}</td>
     `;
 
     tableBody.appendChild(usernameRow);
