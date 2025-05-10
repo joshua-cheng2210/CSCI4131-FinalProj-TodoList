@@ -31,7 +31,7 @@
     border: 1px solid #575656; 
     border-radius: 17px; 
     background-color: #f4f4f4;
-    /* color: #333; */
+    color: #333;
     outline: none;
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     min-width: 180px; 
@@ -69,11 +69,11 @@
     border-radius: 8px;
 }
 
-#todo-filter-form label {
+/* #todo-filter-form label {
     font-size: 0.9em;
     color: #f0a099;
     margin-right: 0.5em; 
-}
+} */
 
 #todo-filter-form input[type="text"],
 #todo-filter-form input[type="datetime-local"] {
