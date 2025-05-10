@@ -17,6 +17,8 @@ body {
     flex-direction: column;
     font-family: 'Work Sans', sans-serif;
     min-height: 100vh;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
     
     background-image: linear-gradient(100deg, #575656, #062e3f);
     color: #ffdfdb;
