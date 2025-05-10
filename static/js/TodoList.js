@@ -29,6 +29,13 @@ async function populateTodoListList(task="", startDate = "", endDate = "") {
             listItem.classList.add('todo-item'); 
             listItem.dataset.taskId = todo.taskID;
 
+            const deadlineDate = new Date(todo.deadline); 
+            const now = new Date();
+            let deadlineClass = '';
+            if (deadlineDate < now && !todo.done) { 
+                deadlineClass = 'overdue';
+            }
+
             let formattedDeadline = new Date(todo.deadline).toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'long', 
@@ -42,7 +49,7 @@ async function populateTodoListList(task="", startDate = "", endDate = "") {
             listItem.innerHTML = `
                 <input type="checkbox" class="todo-checkbox" ${isDone} data-task-id="${todo.taskID}">
                 <span class="task-work">${todo.task || 'N/A'}</span>
-                <span class="task-deadline">Deadline: ${formattedDeadline}</span>
+                <span class="task-deadline" ${deadlineClass} >Deadline: ${formattedDeadline}</span>
                 <button class="delete-btn" data-task-id="${todo.taskID}">Delete</button> 
             `;
 

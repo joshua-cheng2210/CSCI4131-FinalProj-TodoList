@@ -217,3 +217,13 @@
 .TaskList-list .task-actions .delete-btn:hover {
     background-color: #c82333;
 } 
+
+.TaskList-list .task-deadline {
+    font-size: 0.85em;
+    color: #f0a099;
+}
+
+.TaskList-list .task-deadline.overdue {
+    color: #dc3545; 
+    font-weight: bold;
+}
