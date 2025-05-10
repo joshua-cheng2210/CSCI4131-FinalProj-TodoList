@@ -22,7 +22,7 @@
     flex-wrap: wrap; 
     gap: 0.8em; 
 }
-
+/* 
 #todo-form input[type="text"],
 #todo-form input[type="datetime-local"] {
     flex-grow: 1; 
@@ -69,11 +69,11 @@
     border-radius: 8px;
 }
 
-/* #todo-filter-form label {
+#todo-filter-form label {
     font-size: 0.9em;
     color: #f0a099;
     margin-right: 0.5em; 
-} */
+}
 
 #todo-filter-form input[type="text"],
 #todo-filter-form input[type="datetime-local"] {
@@ -190,4 +190,4 @@
 }
 .TaskList-list .task-actions .delete-btn:hover {
     background-color: #c82333;
-}
+} */
