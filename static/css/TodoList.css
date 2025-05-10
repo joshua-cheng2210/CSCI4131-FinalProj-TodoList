@@ -9,3 +9,18 @@
     border: 2px solid #ffdfdb;
     border-radius: 10px;
 }
+
+.page-Title {
+    margin-bottom: 1.5em;
+}
+
+.Page-input-area {
+    margin-bottom: 2em;
+}
+
+#todo-form {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0.8em; 
+    align-items: flex-end; 
+}
