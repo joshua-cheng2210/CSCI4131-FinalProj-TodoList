@@ -17,3 +17,13 @@
 .Login-Page p {
     margin-bottom: 0px;
 }
+
+#login-submit-btn{
+    background-color: #ffdfdb; 
+    color: #062e3f;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1em; 
+    padding: 0.7em 1.5em;
+    border: none;
+    border-radius: 5px;
+}
