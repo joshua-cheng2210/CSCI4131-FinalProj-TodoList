@@ -13,7 +13,6 @@
     margin-bottom: 1.5em;
 }
 
-
 .Page-input-area {
     margin-bottom: 2em;
 }
@@ -57,6 +56,7 @@
     border: none;
     white-space: nowrap;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    grid-column: 1 / -1;
 }
 
 #todo-form button#addTaskBtn:hover {
