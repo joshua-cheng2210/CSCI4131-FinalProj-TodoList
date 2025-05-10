@@ -83,7 +83,7 @@
         "col"
         "col";
     gap: 0.8em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     padding: 1em;
     background-color: rgba(0,0,0,0.1);
     border-radius: 8px;
@@ -105,7 +105,8 @@
     color: #333;
     outline: none;
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    min-width: 150px;
+    width: 100%;
+    margin: 0px;
 }
 
 #todo-filter-form input[type="text"]:focus,
@@ -121,11 +122,14 @@
     border: none;
     white-space: nowrap;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    grid-column: 1 / -1;
+    justify-self: stretch;
 }
 
 #todo-filter-form button#filterButton {
     background-color: #ffdfdb;
     color: #062e3f;
+    
 }
 
 #todo-filter-form button#filterButton:hover {
