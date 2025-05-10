@@ -49,7 +49,7 @@ async function populateTodoListList(task="", startDate = "", endDate = "") {
             listItem.innerHTML = `
                 <input type="checkbox" class="todo-checkbox" ${isDone} data-task-id="${todo.taskID}">
                 <span class="task-work">${todo.task || 'N/A'}</span>
-                <span class="task-deadline" ${deadlineClass} >Deadline: ${formattedDeadline}</span>
+                <span class="task-deadline ${deadlineClass}" >Deadline: ${formattedDeadline}</span>
                 <button class="delete-btn" data-task-id="${todo.taskID}">Delete</button> 
             `;
 
