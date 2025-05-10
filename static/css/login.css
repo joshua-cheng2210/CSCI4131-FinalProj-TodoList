@@ -27,3 +27,8 @@
     border: none;
     border-radius: 5px;
 }
+
+login-submit-btn:hover {
+    background-color: #062e3f; 
+    color: #ffdfdb;
+}
