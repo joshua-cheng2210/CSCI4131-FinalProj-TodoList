@@ -22,6 +22,7 @@
     grid-template-columns: 1fr 1fr;
     grid-area: "col col";
     background-color: rgba(0,0,0,0.1);
+    padding: 1em;
     /* gap: 0.8em;  */
 }
 #newTaskInput, #newTask-deadline{
