@@ -92,3 +92,9 @@
     color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
+
+.Register-Page {
+    padding: 2em;
+    border: 3px solid black; 
+    border-radius: 3px;
+}
