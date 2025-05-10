@@ -75,8 +75,13 @@
 }
 
 #todo-filter-form {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-area: 
+        "col col col"  
+        "col col col"  
+        "col"
+        "col";
     gap: 0.8em;
     margin-bottom: 2em;
     padding: 1em;
@@ -87,12 +92,12 @@
 #todo-filter-form label {
     font-size: 0.9em;
     color: #f0a099;
-    margin-right: 0.5em; 
+    /* margin-right: 0.5em;  */
 }
 
 #todo-filter-form input[type="text"],
 #todo-filter-form input[type="datetime-local"] {
-    padding: 0.6em 0.8em;
+    /* padding: 0.6em 0.8em; */
     font-size: 0.9em; 
     border: 1px solid #575656;
     border-radius: 17px;
