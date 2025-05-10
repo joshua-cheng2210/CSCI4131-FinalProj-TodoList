@@ -25,6 +25,8 @@
 }
 #newTaskInput, #newTask-deadline{
     width: auto;
+    margin-left: 0;
+    margin-right: 0;
 }
 #todo-form input[type="text"],
 #todo-form input[type="datetime-local"] {
