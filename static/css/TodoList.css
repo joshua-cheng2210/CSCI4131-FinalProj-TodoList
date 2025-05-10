@@ -97,6 +97,7 @@
     font-size: 0.9em;
     color: #f0a099;
     /* margin-right: 0.5em;  */
+    padding-left: 1em;
 }
 
 #todo-filter-form input[type="text"],
