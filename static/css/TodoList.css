@@ -26,7 +26,6 @@
     background-color: rgba(0,0,0,0.1);
     padding: 1em;
     border-radius: 8px;
-    /* gap: 0.8em;  */
 }
 #newTaskInput, #newTask-deadline{
     width: auto;
@@ -96,7 +95,6 @@
 #todo-filter-form label {
     font-size: 0.9em;
     color: #f0a099;
-    /* margin-right: 0.5em;  */
     padding-left: 1em;
 }
 
@@ -151,13 +149,11 @@
     background-color: #5a6268;
 }
 
-
 .TaskList-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 
 .TaskList-list li {
     display: flex;
