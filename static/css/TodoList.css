@@ -23,6 +23,9 @@
     grid-template-columns: 1fr 1fr;
     /* gap: 0.8em;  */
 }
+#newTaskInput, #newTask-deadline{
+    width: auto;
+}
 #todo-form input[type="text"],
 #todo-form input[type="datetime-local"] {
     flex-grow: 1; 
