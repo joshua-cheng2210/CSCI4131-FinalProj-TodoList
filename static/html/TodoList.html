@@ -36,14 +36,14 @@
 
             <div>
                 <form id="todo-filter-form">
-                    <label for="filterInput">task name:</label>
+                    <label id="filterInput-label" for="filterInput">task name:</label>
                     <input type="text" id="filterInput" placeholder="Filter by task name">
 
-                    <label for="startDate">Start deadline:</label>
-                    <label for="endDate">End deadline:</label>
+                    <label id="startDate-label" for="startDate">Start deadline:</label>
+                    <label id="endDate-label" for="endDate">End deadline:</label>
                     <input type="datetime-local" id="startDate">
                     <input type="datetime-local" id="endDate">
-                    
+
                     <button id="filterButton">Filter</button>
                     <button id="cancelFilterButton">Cancel Filter</button>
                 </form>
