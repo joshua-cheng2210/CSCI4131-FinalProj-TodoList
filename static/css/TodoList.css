@@ -1,17 +1,1 @@
-body {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Work Sans', sans-serif;
-    min-height: 100vh;
-    padding-top: 3%;
-
-    background-image: linear-gradient(100deg, #575656, #062e3f);
-    color: #ffdfdb;
-    transition: 0.3s linear;
-}
-
-#greeting {
-    animation: animated-text 2s steps(11,end) 0.5s 1 normal both,
-        animated-cursor 750ms steps(11,end) infinite;
-}
+@import url("main.css");
