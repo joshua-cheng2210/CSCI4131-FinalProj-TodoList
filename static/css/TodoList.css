@@ -21,7 +21,7 @@
 #todo-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.8em; 
+    /* gap: 0.8em;  */
 }
 #todo-form input[type="text"],
 #todo-form input[type="datetime-local"] {
