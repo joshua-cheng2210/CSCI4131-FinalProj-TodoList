@@ -5,7 +5,7 @@
     margin-right: 0.5em;
 }
 
-#login-email #login-password{
+#login-email, #login-password{
     width: auto;
 }
 
