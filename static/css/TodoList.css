@@ -20,7 +20,9 @@
 #todo-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-area: "col col";
+    grid-area: 
+        "taskInput deadlineInput"  
+        "submitBtn submitBtn";
     background-color: rgba(0,0,0,0.1);
     padding: 1em;
     border-radius: 8px;
@@ -61,7 +63,6 @@
     white-space: nowrap;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     /* grid-column: 1 / -1; */
-    grid-area: "col";
     justify-self: center;
     width: 100%;
 }
