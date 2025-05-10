@@ -22,7 +22,6 @@
     display: flex;
     flex-wrap: wrap; 
     gap: 0.8em; 
-    align-items: flex-end; 
 }
 
 #todo-form input[type="text"],
@@ -65,7 +64,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.8em;
-    align-items: flex-end;
     margin-bottom: 2em;
     padding: 1em;
     background-color: rgba(0,0,0,0.1);
@@ -150,7 +148,7 @@
 
 .TaskList-list li.completed .task-text {
     text-decoration: line-through;
-    color: #aaa; /* Dim completed tasks */
+    color: #aaa; 
 }
 
 .TaskList-list .task-info {
@@ -180,7 +178,7 @@
 }
 
 .TaskList-list .task-actions .complete-btn {
-    background-color: #28a745; /* Green */
+    background-color: #28a745; 
     color: white;
 }
 .TaskList-list .task-actions .complete-btn:hover {
@@ -188,7 +186,7 @@
 }
 
 .TaskList-list .task-actions .delete-btn {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545; 
     color: white;
 }
 .TaskList-list .task-actions .delete-btn:hover {
