@@ -13,6 +13,7 @@
     margin-bottom: 1.5em;
 }
 
+/* 
 .Page-input-area {
     margin-bottom: 2em;
 }
@@ -22,7 +23,6 @@
     flex-wrap: wrap; 
     gap: 0.8em; 
 }
-/* 
 #todo-form input[type="text"],
 #todo-form input[type="datetime-local"] {
     flex-grow: 1; 
