@@ -78,8 +78,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-area: 
-        "col col col"  
-        "col col col"  
+        "col"
+        "col"
+        "col col"  
+        "col col"  
         "col"
         "col";
     gap: 0.8em;
