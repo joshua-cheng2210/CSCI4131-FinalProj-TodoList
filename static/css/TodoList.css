@@ -20,6 +20,7 @@
 #todo-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-area: "col col"
     /* gap: 0.8em;  */
 }
 #newTaskInput, #newTask-deadline{
@@ -56,7 +57,8 @@
     border: none;
     white-space: nowrap;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    grid-column: 1 / -1;
+    /* grid-column: 1 / -1; */
+    grid-area: "col";
     justify-self: center;
     width: 100%;
 }
