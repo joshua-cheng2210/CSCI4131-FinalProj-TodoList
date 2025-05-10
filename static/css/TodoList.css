@@ -19,8 +19,8 @@
 }
 
 #todo-form {
-    display: flex;
-    flex-wrap: wrap; 
+    display: grid;
+    grid-template-columns: 1 1;
     gap: 0.8em; 
 }
 #todo-form input[type="text"],
