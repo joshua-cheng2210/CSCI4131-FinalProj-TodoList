@@ -123,3 +123,74 @@
 #todo-filter-form button#cancelFilterButton:hover {
     background-color: #5a6268;
 }
+
+
+.TaskList-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.TaskList-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8em 1em;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 223, 219, 0.2);
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.TaskList-list li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.TaskList-list li.completed .task-text {
+    text-decoration: line-through;
+    color: #aaa; /* Dim completed tasks */
+}
+
+.TaskList-list .task-info {
+    flex-grow: 1;
+    margin-right: 1em;
+}
+
+.TaskList-list .task-text {
+    font-size: 1.1em;
+    color: #ffdfdb;
+    margin-bottom: 0.25em;
+}
+
+.TaskList-list .task-deadline {
+    font-size: 0.85em;
+    color: #f0a099;
+}
+
+.TaskList-list .task-actions button {
+    padding: 0.4em 0.8em;
+    font-size: 0.85em;
+    border-radius: 12px;
+    border: none;
+    margin-left: 0.5em;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.TaskList-list .task-actions .complete-btn {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+.TaskList-list .task-actions .complete-btn:hover {
+    background-color: #218838;
+}
+
+.TaskList-list .task-actions .delete-btn {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+.TaskList-list .task-actions .delete-btn:hover {
+    background-color: #c82333;
+}
