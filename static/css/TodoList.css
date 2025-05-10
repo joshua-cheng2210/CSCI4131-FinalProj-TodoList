@@ -60,3 +60,66 @@
     background-color: #575656;
     color: #ffdfdb;
 }
+
+#todo-filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    align-items: flex-end;
+    margin-bottom: 2em;
+    padding: 1em;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+#todo-filter-form label {
+    font-size: 0.9em;
+    color: #f0a099;
+    margin-right: 0.5em; 
+}
+
+#todo-filter-form input[type="text"],
+#todo-filter-form input[type="datetime-local"] {
+    padding: 0.6em 0.8em;
+    font-size: 0.9em; 
+    border: 1px solid #575656;
+    border-radius: 17px;
+    background-color: #f4f4f4;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    min-width: 150px;
+}
+
+#todo-filter-form input[type="text"]:focus,
+#todo-filter-form input[type="datetime-local"]:focus {
+    border-color: #ffdfdb;
+    box-shadow: 0 0 0 2px rgba(255, 223, 219, 0.5);
+}
+
+#todo-filter-form button {
+    padding: 0.6em 1.2em;
+    font-size: 0.9em;
+    border-radius: 17px;
+    border: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#todo-filter-form button#filterButton {
+    background-color: #ffdfdb;
+    color: #062e3f;
+}
+
+#todo-filter-form button#filterButton:hover {
+    background-color: #575656;
+    color: #ffdfdb;
+}
+
+#todo-filter-form button#cancelFilterButton {
+    background-color: #6c757d; 
+    color: white;
+}
+#todo-filter-form button#cancelFilterButton:hover {
+    background-color: #5a6268;
+}
