@@ -21,7 +21,7 @@
 #todo-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* gap: 0.8em;  */
+    gap: 0.8em; 
 }
 #newTaskInput, #newTask-deadline{
     width: auto;
@@ -39,7 +39,7 @@
     color: #333;
     outline: none;
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    min-width: 180px; 
+    width: 100%
 }
 
 #todo-form input[type="text"]:focus,
